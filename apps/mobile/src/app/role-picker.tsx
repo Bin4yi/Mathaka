@@ -54,7 +54,7 @@ export default function RolePicker() {
       </AppText>
 
       <BigCard label={t(lang, 'role.family')} hint={t(lang, 'role.familyHint')} onPress={() => void pick('family')}>
-        <Image source={Assets.icons.family} style={styles.icon} accessibilityElementsHidden importantForAccessibility="no" />
+        <Image accessibilityIgnoresInvertColors source={Assets.icons.family} style={styles.icon} accessibilityElementsHidden importantForAccessibility="no" />
         <View style={styles.flex}>
           <AppText lang={lang} size={22} bold>{t(lang, 'role.family')}</AppText>
           <AppText lang={lang} size={18} color={theme.textMuted}>{t(lang, 'role.familyHint')}</AppText>
@@ -62,7 +62,7 @@ export default function RolePicker() {
       </BigCard>
 
       <BigCard label={t(lang, 'role.elder')} hint={t(lang, 'role.elderHint')} onPress={() => void pick('elder')}>
-        <Image source={Assets.icons.elder} style={styles.icon} accessibilityElementsHidden importantForAccessibility="no" />
+        <Image accessibilityIgnoresInvertColors source={Assets.icons.elder} style={styles.icon} accessibilityElementsHidden importantForAccessibility="no" />
         <View style={styles.flex}>
           <AppText lang={lang} size={22} bold>{t(lang, 'role.elder')}</AppText>
           <AppText lang={lang} size={18} color={theme.textMuted}>{t(lang, 'role.elderHint')}</AppText>

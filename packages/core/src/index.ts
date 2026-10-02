@@ -4,3 +4,6 @@ export * from './clock';
 export * from './seed';
 export * from './ai';
 export * from './schedule';
+export * from './dose';
+export * from './templates';
+export * from './pillText';

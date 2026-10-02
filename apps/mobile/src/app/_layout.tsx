@@ -1,12 +1,16 @@
 import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
+import { router, Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { FONT_FILES } from '../a11y/fonts';
+import { useTheme } from '../a11y/useTheme';
+import { checkMissed, loadElderView } from '../services/doseService';
+import { onReminderTap, rescheduleReminders, setupNotifications } from '../services/notifications';
 import { loadAppSettings } from '../services/settings';
+import { useAppStore } from '../store/appStore';
 
 void SplashScreen.preventAutoHideAsync();
 
@@ -14,12 +18,26 @@ export default function RootLayout() {
   const [fontsLoaded, fontError] = useFonts(FONT_FILES);
   const [ready, setReady] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const role = useAppStore((s) => s.role);
+  const theme = useTheme();
 
   useEffect(() => {
     loadAppSettings()
       .then(() => setReady(true))
       .catch((e: unknown) => setError(String(e)));
   }, []);
+
+  // Elder phone: reminders, missed-dose check, and "tap reminder -> dose screen".
+  useEffect(() => {
+    if (!ready || role !== 'elder') return;
+    void (async () => {
+      await setupNotifications();
+      await checkMissed();
+      const view = await loadElderView();
+      if (view) await rescheduleReminders(view);
+    })();
+    return onReminderTap(() => router.push('/elder/dose'));
+  }, [ready, role]);
 
   const done = (fontsLoaded || !!fontError) && (ready || !!error);
   useEffect(() => {
@@ -37,8 +55,8 @@ export default function RootLayout() {
   }
   return (
     <SafeAreaProvider>
-      <StatusBar style="auto" />
-      <Stack screenOptions={{ headerShown: false }} />
+      <StatusBar style={theme.name === 'light' ? 'dark' : 'light'} />
+      <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: theme.bg }, animation: 'fade' }} />
     </SafeAreaProvider>
   );
 }

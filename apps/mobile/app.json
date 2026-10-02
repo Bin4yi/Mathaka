@@ -17,7 +17,12 @@
         "backgroundColor": "#E3F1EE",
         "foregroundImage": "./assets/generated/brand/adaptive-icon-foreground.png"
       },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "android.permission.SCHEDULE_EXACT_ALARM",
+        "android.permission.POST_NOTIFICATIONS",
+        "android.permission.VIBRATE"
+      ]
     },
     "web": {
       "bundler": "metro",
@@ -34,10 +39,19 @@
           "image": "./assets/generated/brand/logo.png",
           "imageWidth": 160,
           "backgroundColor": "#FBF8F1",
-          "dark": { "image": "./assets/generated/brand/logo.png", "backgroundColor": "#14181F" }
+          "dark": {
+            "image": "./assets/generated/brand/logo.png",
+            "backgroundColor": "#14181F"
+          }
         }
       ],
-      "expo-localization"
+      "expo-localization",
+      [
+        "expo-notifications",
+        {
+          "color": "#145A52"
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true

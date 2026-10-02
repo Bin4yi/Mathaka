@@ -1,63 +1,63 @@
-import { addDays, dateKey, type Alert, type Medicine } from '@mathaka/core';
+import { clockText, isoClock, minutesOfDay, type Alert, type Lang, type Medicine, type SlotState } from '@mathaka/core';
 import { router } from 'expo-router';
-import { Pressable, StyleSheet, View } from 'react-native';
-import { SIZE } from '../../a11y/tokens';
+import { Image, Pressable, StyleSheet, View } from 'react-native';
+import { Assets } from '../../../assets/generated';
+import { SIZE, SLOT_COLORS } from '../../a11y/tokens';
 import { useTheme } from '../../a11y/useTheme';
 import { getAi } from '../../ai';
 import { AppText } from '../../components/AppText';
-import { PillImage } from '../../components/PillImage';
+import { SLOT_ICON } from '../../components/elder/VirtualPillBox';
+import { FamilyButton, Section } from '../../components/family/FamilyUI';
+import { PillGraphic } from '../../components/PillGraphic';
 import { Screen } from '../../components/Screen';
 import { DEMO_MODE } from '../../config';
-import { getRepository, resetDemoData } from '../../db/bootstrap';
+import { resetDemoData } from '../../db/bootstrap';
 import { useLoad } from '../../hooks/useLoad';
 import { t, type StringKey } from '../../i18n';
-import { clock } from '../../services/clock';
-import { saveRole } from '../../services/settings';
+import { loadFamilyView, markAlertRead } from '../../services/familyService';
+import { setDemoTime } from '../../services/settings';
 import { useAppStore } from '../../store/appStore';
 
-/**
- * M1 family dashboard: medicines, 7-day counts and alerts from the repository.
- * M2 adds the today timeline, demo-time control and PIN; later milestones add the rest.
- */
+const STATUS_ICON = {
+  taken: Assets.icons.statusTaken,
+  due: Assets.icons.statusDue,
+  late: Assets.icons.statusUnsure,
+  missed: Assets.icons.statusMissed,
+  upcoming: null,
+} as const;
+
+const DEMO_TIMES: [number, number][] = [
+  [8, 0],
+  [13, 0],
+  [20, 0],
+  [22, 0],
+];
+
 export default function FamilyHome() {
   const lang = useAppStore((s) => s.uiLang);
+  const version = useAppStore((s) => s.dataVersion);
+  const offset = useAppStore((s) => s.demoOffsetMs);
   const theme = useTheme();
-
-  const { data, reload } = useLoad(async () => {
-    const repo = await getRepository();
-    const now = clock.now();
-    const [elder, medicines, profiles, events, alerts] = await Promise.all([
-      repo.getElder(),
-      repo.listMedicines(),
-      repo.listPillProfiles(),
-      repo.listDoseEvents(dateKey(addDays(now, -7)), dateKey(now)),
-      repo.listAlerts(),
-    ]);
-    const count = (s: string) => events.filter((e) => e.status === s).length;
-    return {
-      elder,
-      medicines,
-      profiles,
-      alerts,
-      counts: { taken: count('taken'), missed: count('missed'), prevented: count('prevented_double') },
-      storage: repo.kind,
-    };
-  }, []);
+  const { data } = useLoad(() => loadFamilyView(), [version, offset]);
 
   if (!data) return <Screen>{null}</Screen>;
+  const { elderView } = data;
+  const elderName = elderView.elder.preferredName;
   const medicineById = new Map(data.medicines.map((m) => [m.id, m]));
 
+  const statusText = (s: SlotState) => {
+    if (s.status === 'taken' && s.takenAt) return t(lang, 'family.status.taken', { time: isoClock(s.takenAt) });
+    if (s.status === 'upcoming') return t(lang, 'family.status.upcoming', { time: clockText(s.window.dueAt) });
+    return t(lang, `family.status.${s.status}` as StringKey);
+  };
+
   const alertText = (a: Alert): string => {
-    if (a.kind === 'missed' && a.slot) {
-      return t(lang, 'family.alert.missed', {
-        name: data.elder?.preferredName ?? '',
-        slot: t(lang, `slot.${a.slot}`),
-        date: a.date,
-      });
-    }
+    const slot = a.slot ? t(lang, `slot.${a.slot}` as StringKey) : '';
+    if (a.kind === 'missed') return t(lang, 'family.alert.missed', { name: elderName, slot, date: a.date });
+    if (a.kind === 'unsure_answer') return t(lang, 'family.alert.unsure_answer', { name: elderName, slot });
     if (a.kind === 'low_stock') {
       const m = medicineById.get(String(a.data?.medicineId ?? ''));
-      return t(lang, 'family.alert.low_stock', { medicine: m ? label(m, lang) : '', remaining: a.data?.remaining ?? '' });
+      return t(lang, 'family.alert.low_stock', { medicine: m ? purpose(m, lang) : '', remaining: a.data?.remaining ?? '' });
     }
     return t(lang, 'family.alert.other', { kind: a.kind });
   };
@@ -66,11 +66,13 @@ export default function FamilyHome() {
     <Screen>
       <View style={styles.row}>
         <AppText lang={lang} size={SIZE.familyTitle} bold accessibilityRole="header" style={styles.flex}>
-          {t(lang, 'family.title')}
+          {t(lang, 'family.title')} · {elderName}
         </AppText>
         {DEMO_MODE && (
           <View style={[styles.badge, { backgroundColor: theme.primary }]}>
-            <AppText lang={lang} size={14} bold color={theme.onPrimary}>{t(lang, 'family.demo')}</AppText>
+            <AppText lang={lang} size={14} bold color={theme.onPrimary}>
+              {t(lang, 'family.demo')}
+            </AppText>
           </View>
         )}
       </View>
@@ -78,22 +80,99 @@ export default function FamilyHome() {
         {t(lang, 'family.ai', { kind: getAi().kind })} · {t(lang, 'family.storage', { kind: data.storage })}
       </AppText>
 
-      <Section title={t(lang, 'family.history')} lang={lang}>
+      {DEMO_MODE && (
+        <Section title={t(lang, 'family.demoTime')} lang={lang}>
+          <AppText lang={lang} size={SIZE.familyText}>
+            {t(lang, 'family.demoTimeNow', { time: clockText(minutesOfDay(elderView.now)) })}
+          </AppText>
+          <View style={styles.wrap}>
+            {DEMO_TIMES.map(([h, m]) => (
+              <FamilyButton key={h} lang="en" label={`${h}:${String(m).padStart(2, '0')}`} onPress={() => setDemoTime(h, m)} />
+            ))}
+            <FamilyButton lang={lang} label={t(lang, 'family.realTime')} onPress={() => setDemoTime(null)} />
+          </View>
+        </Section>
+      )}
+
+      <Section title={t(lang, 'family.today')} lang={lang}>
+        {data.today.map((s) => (
+          <View key={s.slot} style={styles.row} accessible accessibilityLabel={`${t(lang, `slot.${s.slot}` as StringKey)}: ${statusText(s)}`}>
+            <View style={[styles.slotDot, { backgroundColor: SLOT_COLORS[s.slot] }]} />
+            <Image accessibilityIgnoresInvertColors source={SLOT_ICON[s.slot]} style={styles.icon24} />
+            <AppText lang={lang} size={SIZE.familyText} bold style={styles.slotName}>
+              {t(lang, `slot.${s.slot}` as StringKey)}
+            </AppText>
+            <AppText
+              lang={lang}
+              size={SIZE.familyText}
+              style={styles.flex}
+              color={s.status === 'taken' ? theme.taken : s.status === 'missed' || s.status === 'late' ? theme.missed : theme.text}
+            >
+              {statusText(s)}
+            </AppText>
+            {STATUS_ICON[s.status] && <Image accessibilityIgnoresInvertColors source={STATUS_ICON[s.status]!} style={styles.icon24} />}
+          </View>
+        ))}
+        {data.preventedToday.map((e) => (
+          <AppText key={e.id} lang={lang} size={SIZE.familyText} color={theme.primary}>
+            {t(lang, 'family.preventedAt', { time: e.at ? isoClock(e.at) : '' })}
+          </AppText>
+        ))}
+        {data.questionsToday > 0 && (
+          <AppText lang={lang} size={16} color={theme.textMuted}>
+            {t(lang, 'family.questions', { n: data.questionsToday })}
+          </AppText>
+        )}
+      </Section>
+
+      <Section title={t(lang, 'family.alerts')} lang={lang}>
+        {data.alerts.length === 0 && <AppText lang={lang} size={SIZE.familyText}>{t(lang, 'family.noAlerts')}</AppText>}
+        {data.alerts.map((a) => (
+          <View key={a.id} style={[styles.alert, { borderColor: a.readAt ? theme.textMuted : theme.missed }]}>
+            <AppText lang={lang} size={SIZE.familyText} color={a.readAt ? theme.textMuted : theme.text}>
+              {alertText(a)}
+            </AppText>
+            {!a.readAt && (
+              <Pressable accessibilityRole="button" onPress={() => void markAlertRead(a)} style={styles.link}>
+                <AppText lang={lang} size={16} bold color={theme.primary}>
+                  {t(lang, 'family.markRead')}
+                </AppText>
+              </Pressable>
+            )}
+          </View>
+        ))}
+      </Section>
+
+      <Section title={t(lang, 'family.week')} lang={lang}>
         <View style={styles.counts}>
           <Count lang={lang} label="family.taken" value={data.counts.taken} color={theme.taken} />
           <Count lang={lang} label="family.missed" value={data.counts.missed} color={theme.missed} />
           <Count lang={lang} label="family.prevented" value={data.counts.prevented} color={theme.primary} />
         </View>
+        {data.week.map((w) => (
+          <View key={w.date} style={styles.row}>
+            <AppText lang="en" size={15} style={styles.date}>
+              {w.date.slice(5)}
+            </AppText>
+            {w.states.map((s) => (
+              <View key={s.slot} style={styles.weekCell} accessible accessibilityLabel={`${w.date} ${t(lang, `slot.${s.slot}` as StringKey)}: ${statusText(s)}`}>
+                {STATUS_ICON[s.status] ? <Image accessibilityIgnoresInvertColors source={STATUS_ICON[s.status]!} style={styles.icon24} /> : <View style={styles.icon24} />}
+              </View>
+            ))}
+          </View>
+        ))}
       </Section>
 
       <Section title={t(lang, 'family.medicines')} lang={lang}>
         {data.medicines.map((m) => {
           const profile = data.profiles.find((p) => p.medicineId === m.id);
           return (
-            <View key={m.id} style={styles.row} accessible accessibilityLabel={`${label(m, lang)}. ${profile?.description ?? ''}`}>
-              <PillImage assetKey={profile?.assetKey} size={56} />
+            <View key={m.id} style={styles.row} accessible accessibilityLabel={`${purpose(m, lang)}. ${profile?.description ?? ''}`}>
+              {profile && <PillGraphic spec={profile.spec} size={56} />}
               <View style={styles.flex}>
-                <AppText lang={lang} size={SIZE.familyText} bold>{label(m, lang)}</AppText>
+                <AppText lang={lang} size={SIZE.familyText} bold>
+                  {purpose(m, lang)}
+                </AppText>
                 <AppText lang="en" size={15} color={theme.textMuted}>
                   {[`${m.name} ${m.strength}`.trim(), profile?.description].filter(Boolean).join(' · ')}
                 </AppText>
@@ -106,31 +185,15 @@ export default function FamilyHome() {
         })}
       </Section>
 
-      <Section title={t(lang, 'family.alerts')} lang={lang}>
-        {data.alerts.length === 0 && <AppText lang={lang} size={SIZE.familyText}>{t(lang, 'family.noAlerts')}</AppText>}
-        {data.alerts.map((a) => (
-          <AppText key={a.id} lang={lang} size={SIZE.familyText} color={a.readAt ? theme.textMuted : theme.text}>
-            {a.readAt ? '' : '● '}
-            {alertText(a)}
-          </AppText>
-        ))}
-      </Section>
-
-      <FamilyButton
-        lang={lang}
-        label={t(lang, 'family.switchRole')}
-        onPress={async () => {
-          await saveRole(null);
-          router.replace('/role-picker');
-        }}
-      />
+      <FamilyButton lang={lang} primary label={t(lang, 'family.openElder')} onPress={() => router.push('/elder')} />
+      <FamilyButton lang={lang} label={t(lang, 'family.settings')} onPress={() => router.push('/family/settings')} />
       {DEMO_MODE && (
         <FamilyButton
           lang={lang}
           label={t(lang, 'family.resetDemo')}
           onPress={async () => {
             await resetDemoData();
-            await reload();
+            useAppStore.getState().bumpData();
           }}
         />
       )}
@@ -138,49 +201,35 @@ export default function FamilyHome() {
   );
 }
 
-function label(m: Medicine, lang: 'si' | 'ta' | 'en') {
+function purpose(m: Medicine, lang: Lang) {
   return m.purpose[lang] || m.purpose.en;
 }
 
-function Section({ title, lang, children }: { title: string; lang: 'si' | 'ta' | 'en'; children: React.ReactNode }) {
-  const theme = useTheme();
-  return (
-    <View style={[styles.section, { borderColor: theme.border, backgroundColor: theme.surface }]}>
-      <AppText lang={lang} size={20} bold accessibilityRole="header">{title}</AppText>
-      {children}
-    </View>
-  );
-}
-
-function Count({ lang, label, value, color }: { lang: 'si' | 'ta' | 'en'; label: StringKey; value: number; color: string }) {
+function Count({ lang, label, value, color }: { lang: Lang; label: StringKey; value: number; color: string }) {
   return (
     <View style={styles.count} accessible accessibilityLabel={`${t(lang, label)}: ${value}`}>
-      <AppText lang="en" size={32} bold color={color}>{String(value)}</AppText>
-      <AppText lang={lang} size={15}>{t(lang, label)}</AppText>
+      <AppText lang="en" size={32} bold color={color}>
+        {String(value)}
+      </AppText>
+      <AppText lang={lang} size={15}>
+        {t(lang, label)}
+      </AppText>
     </View>
-  );
-}
-
-function FamilyButton({ lang, label, onPress }: { lang: 'si' | 'ta' | 'en'; label: string; onPress: () => void }) {
-  const theme = useTheme();
-  return (
-    <Pressable
-      accessibilityRole="button"
-      accessibilityLabel={label}
-      onPress={onPress}
-      style={({ pressed }) => [styles.button, { borderColor: theme.border, opacity: pressed ? 0.8 : 1 }]}
-    >
-      <AppText lang={lang} size={SIZE.familyText} bold>{label}</AppText>
-    </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
   flex: { flex: 1 },
-  row: { flexDirection: 'row', alignItems: 'center', gap: 12 },
+  row: { flexDirection: 'row', alignItems: 'center', gap: 10 },
+  wrap: { flexDirection: 'row', flexWrap: 'wrap', gap: 10 },
   badge: { paddingHorizontal: 10, paddingVertical: 4, borderRadius: 12 },
-  section: { borderWidth: 2, borderRadius: SIZE.radius, padding: SIZE.gap, gap: 12 },
   counts: { flexDirection: 'row', flexWrap: 'wrap', gap: SIZE.gap },
-  count: { minWidth: 96, alignItems: 'flex-start' },
-  button: { minHeight: 56, borderWidth: 2, borderRadius: SIZE.radius, alignItems: 'center', justifyContent: 'center', padding: 12 },
+  count: { minWidth: 96 },
+  slotDot: { width: 10, alignSelf: 'stretch', borderRadius: 5 },
+  slotName: { minWidth: 80 },
+  icon24: { width: 28, height: 28 },
+  alert: { borderLeftWidth: 5, paddingLeft: 10, gap: 4 },
+  link: { minHeight: 44, justifyContent: 'center' },
+  date: { width: 52 },
+  weekCell: { width: 40, alignItems: 'center' },
 });
