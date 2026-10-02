@@ -38,7 +38,7 @@ export default function ApproveScreen() {
     if (!cal.calibratedBy) return setMsg(t(lang, 'approve.noCalibrator'));
     if (!who || who === cal.calibratedBy) return setMsg(t(lang, 'approve.same'));
     await approve(who);
-    router.replace('/buddy');
+    router.replace('/buddy/home');
   };
 
   return (

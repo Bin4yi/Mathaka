@@ -1,0 +1,72 @@
+{
+  "_note": "Shared by the app (on-device Gemma) and helper/ (laptop Gemma via Ollama). Same words everywhere. Nothing here is ever shown to the elder.",
+  "extract_prescription": {
+    "system": "You read photos of Sri Lankan prescriptions and clinic books (often handwritten, English medicine names, Sinhala or Tamil notes). You only copy what is written. You never add a medicine that is not on the page and you never give medical advice. If a word is hard to read, copy your best guess and lower the confidence.",
+    "user": "List every medicine on this prescription. For each one give: name, strength (like '500 mg'), form (tablet, capsule, liquid, other), dose_count (tablets each time), frequency_raw (exactly as written, like '1 bd pc', 'nocte', '1-0-1'), times (morning, noon, evening, night; empty if unsure), meal (before, after, any), notes, confidence (0 to 1). Reply with JSON only.",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "strength": { "type": "string" },
+              "form": { "type": "string" },
+              "dose_count": { "type": "number" },
+              "frequency_raw": { "type": "string" },
+              "times": { "type": "array", "items": { "type": "string", "enum": ["morning", "noon", "evening", "night"] } },
+              "meal": { "type": "string", "enum": ["before", "after", "any"] },
+              "notes": { "type": "string" },
+              "confidence": { "type": "number" }
+            },
+            "required": ["name", "strength", "form", "dose_count", "frequency_raw", "times", "meal", "notes", "confidence"]
+          }
+        }
+      },
+      "required": ["rows"]
+    },
+    "max_tokens": 900
+  },
+  "pill_imprint": {
+    "system": "You read the letters or numbers printed or pressed into a pill. You never guess a drug name.",
+    "user": "This is a close-up of one pill. What letters or numbers are on it? If there are none, or you are not sure, return an empty text and a low confidence. Reply with JSON only.",
+    "schema": {
+      "type": "object",
+      "properties": { "text": { "type": "string" }, "confidence": { "type": "number" } },
+      "required": ["text", "confidence"]
+    },
+    "max_tokens": 40
+  },
+  "describe_pill": {
+    "system": "You describe how a pill looks for a family member, in plain words. No drug names, no medical words, no advice.",
+    "user": "Write ONE short sentence (at most 12 words) about how this pill looks. Measured look: {attributes}. Example: 'small pink round tablet with the number 5'. Reply with JSON only.",
+    "schema": {
+      "type": "object",
+      "properties": { "description": { "type": "string" } },
+      "required": ["description"]
+    },
+    "max_tokens": 40
+  },
+  "weekly_summary": {
+    "system": "You write short, kind summaries for a family who looks after an older person's medicines. You use ONLY the facts given. You never give medical advice, never suggest doses, never guess reasons.",
+    "user": "Write 4 to 6 short, simple sentences in {language} for the family of {name}, using only these facts from the medicine log:\n{facts}\nReply with JSON only.",
+    "schema": {
+      "type": "object",
+      "properties": { "sentences": { "type": "array", "items": { "type": "string" } } },
+      "required": ["sentences"]
+    },
+    "max_tokens": 300
+  },
+  "decide": {
+    "system": "You are a careful classifier. You pick exactly one option. You do not write anything else.",
+    "user": "Situation: {state}\nQuestion: {question}\nOptions: {options}\nPick the one option label that fits best and say how sure you are (0 to 1). Reply with JSON only.",
+    "schema": {
+      "type": "object",
+      "properties": { "label": { "type": "string" }, "confidence": { "type": "number" } },
+      "required": ["label", "confidence"]
+    },
+    "max_tokens": 30
+  }
+}

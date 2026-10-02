@@ -1,6 +1,7 @@
 import { clockText, isoClock, minutesOfDay, type Alert, type Lang, type Medicine, type SlotState } from '@mathaka/core';
 import { router } from 'expo-router';
-import { Image, Pressable, StyleSheet, View } from 'react-native';
+import { useState } from 'react';
+import { ActivityIndicator, Image, Pressable, StyleSheet, View } from 'react-native';
 import { Assets } from '../../../assets/generated';
 import { SIZE, SLOT_COLORS } from '../../a11y/tokens';
 import { useTheme } from '../../a11y/useTheme';
@@ -14,7 +15,7 @@ import { DEMO_MODE } from '../../config';
 import { resetDemoData } from '../../db/bootstrap';
 import { useLoad } from '../../hooks/useLoad';
 import { t, type StringKey } from '../../i18n';
-import { loadFamilyView, markAlertRead } from '../../services/familyService';
+import { loadFamilyView, markAlertRead, weekFacts } from '../../services/familyService';
 import { setDemoTime } from '../../services/settings';
 import { useAppStore } from '../../store/appStore';
 
@@ -39,6 +40,8 @@ export default function FamilyHome() {
   const offset = useAppStore((s) => s.demoOffsetMs);
   const theme = useTheme();
   const { data } = useLoad(() => loadFamilyView(), [version, offset]);
+  const [summary, setSummary] = useState<{ text: string; engine: string } | null>(null);
+  const [writing, setWriting] = useState(false);
 
   if (!data) return <Screen>{null}</Screen>;
   const { elderView } = data;
@@ -163,6 +166,40 @@ export default function FamilyHome() {
         ))}
       </Section>
 
+      <Section title={t(lang, 'summary.title')} lang={lang}>
+        {summary && (
+          <>
+            <AppText lang={lang} size={SIZE.familyText}>{summary.text}</AppText>
+            <AppText lang={lang} size={14} color={theme.textMuted}>
+              {t(lang, 'summary.label', { engine: t(lang, `summary.engine.${summary.engine}` as StringKey) })}
+            </AppText>
+          </>
+        )}
+        {writing ? (
+          <View style={styles.row} accessibilityLiveRegion="polite">
+            <ActivityIndicator />
+            <AppText lang={lang} size={16}>{t(lang, 'summary.working')}</AppText>
+          </View>
+        ) : (
+          <FamilyButton
+            lang={lang}
+            label={t(lang, 'summary.make')}
+            onPress={async () => {
+              setWriting(true);
+              try {
+                const ai = getAi();
+                const text = await ai.weeklySummary({ lang, elderName, facts: weekFacts(data) });
+                setSummary({ text, engine: ai.kind });
+              } catch (e) {
+                setSummary({ text: String(e), engine: getAi().kind });
+              } finally {
+                setWriting(false);
+              }
+            }}
+          />
+        )}
+      </Section>
+
       <Section title={t(lang, 'family.medicines')} lang={lang}>
         {data.medicines.map((m) => {
           const profile = data.profiles.find((p) => p.medicineId === m.id);
@@ -186,7 +223,8 @@ export default function FamilyHome() {
       </Section>
 
       <FamilyButton lang={lang} primary label={t(lang, 'family.openElder')} onPress={() => router.push('/elder')} />
-      <FamilyButton lang={lang} label={t(lang, 'family.calibration')} onPress={() => router.push('/buddy')} />
+      <FamilyButton lang={lang} label={t(lang, 'family.calibration')} onPress={() => router.push('/buddy/home')} />
+      <FamilyButton lang={lang} label={t(lang, 'family.aiButton')} onPress={() => router.push('/family/ai')} />
       <FamilyButton lang={lang} label={t(lang, 'family.settings')} onPress={() => router.push('/family/settings')} />
       {DEMO_MODE && (
         <FamilyButton

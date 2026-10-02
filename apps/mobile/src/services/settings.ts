@@ -26,6 +26,8 @@ export async function loadAppSettings(): Promise<void> {
   demoClock.setOffsetMs(demoOffsetMs);
   useAppStore.setState({ role, uiLang: lang, themeChoice, speechRate, demoOffsetMs });
   applyWebDemoParams();
+  // AI engine (mock / on-device Gemma / laptop helper); never blocks start-up
+  void import('../ai').then((m) => m.applyAiSettings()).catch(() => {});
 }
 
 /**

@@ -1,3 +1,4 @@
+import { aiEn } from './ai.en';
 import { buddyEn } from './buddy.en';
 
 // English strings. Keys are shared by si.ts and ta.ts (TypeScript checks they all exist).
@@ -128,6 +129,7 @@ export const en = {
   'settings.remindersOff': 'Not allowed yet. Tap to allow notifications.',
   'settings.remindersWeb': 'Not available in the web preview.',
   ...buddyEn,
+  ...aiEn,
 } as const;
 
 export type StringKey = keyof typeof en;

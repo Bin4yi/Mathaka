@@ -65,7 +65,7 @@ export default function LookalikesScreen() {
           </Section>
         );
       })}
-      <FamilyButton lang={lang} primary label={t(lang, 'common.next')} onPress={() => router.replace('/buddy')} />
+      <FamilyButton lang={lang} primary label={t(lang, 'common.next')} onPress={() => router.replace('/buddy/home')} />
     </Screen>
   );
 }

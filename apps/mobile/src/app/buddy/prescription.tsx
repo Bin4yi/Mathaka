@@ -72,7 +72,7 @@ export default function PrescriptionScreen() {
         r.times.map((slot) => ({ slot, count: r.dose_count, meal: r.meal })),
       );
     }
-    router.replace('/buddy');
+    router.replace('/buddy/home');
   };
 
   return (

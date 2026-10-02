@@ -58,3 +58,7 @@ venv/
 # eval runs are kept, but not big raw images
 coverage/
 .tmp-web/
+
+# python helper
+helper/.venv*/
+.pytest_cache/

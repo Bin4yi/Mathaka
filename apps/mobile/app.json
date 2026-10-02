@@ -70,7 +70,13 @@
         }
       ],
       "expo-sharing",
-      "expo-asset"
+      "expo-asset",
+      [
+        "llama.rn",
+        {
+          "enableOpenCLAndHexagon": false
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true

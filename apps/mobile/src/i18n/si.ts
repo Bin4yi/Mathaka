@@ -1,3 +1,4 @@
+import { aiSi } from './ai.si';
 import { buddySi } from './buddy.si';
 import type { StringKey } from './en';
 
@@ -128,4 +129,5 @@ export const si: Record<StringKey, string> = {
   'settings.remindersOff': 'තවම අවසර නැත. දැනුම්දීම්වලට අවසර දීමට තට්ටු කරන්න.',
   'settings.remindersWeb': 'වෙබ් පෙරදසුනේ නොමැත.',
   ...buddySi,
+  ...aiSi,
 };

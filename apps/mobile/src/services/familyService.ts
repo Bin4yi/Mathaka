@@ -71,3 +71,19 @@ export async function markAlertRead(alert: Alert): Promise<void> {
   await repo.saveAlert({ ...alert, readAt: clock.now().toISOString() });
   useAppStore.getState().bumpData();
 }
+
+/**
+ * Plain facts from the log for the weekly summary. The AI may only rephrase these;
+ * it gets no medicine names and is told not to give advice.
+ */
+export function weekFacts(v: FamilyView): string[] {
+  const total = v.week.reduce((n, w) => n + w.states.filter((s) => s.status !== 'upcoming').length, 0);
+  const facts = [`${v.counts.taken} of ${total} doses were confirmed as taken in the last 7 days.`];
+  const missed = v.week.flatMap((w) => w.states.filter((s) => s.status === 'missed').map((s) => `${w.date} ${s.slot}`));
+  facts.push(missed.length ? `Not confirmed: ${missed.join(', ')}.` : 'No dose was missed.');
+  if (v.counts.prevented) facts.push(`A second dose was stopped ${v.counts.prevented} time(s).`);
+  if (v.questionsToday) facts.push(`Today the question "Did I take my medicine?" was asked ${v.questionsToday} time(s).`);
+  const low = v.medicines.filter((m) => m.remainingCount > 0 && m.remainingCount < 7).length;
+  if (low) facts.push(`${low} medicine(s) are running low and need a refill.`);
+  return facts;
+}

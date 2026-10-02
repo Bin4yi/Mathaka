@@ -15,7 +15,8 @@
     "test": "npm run test --workspaces --if-present",
     "lint": "npm run lint --workspaces --if-present",
     "chime": "node tools/make-chime.mjs",
-    "mat": "tsx tools/make-mat.ts"
+    "mat": "tsx tools/make-mat.ts",
+    "test:helper": "cd helper && .venvScriptspython -m pytest -q"
   },
   "devDependencies": {
     "@react-native/jest-preset": "^0.86.3",

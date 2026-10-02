@@ -1,3 +1,4 @@
+import { aiTa } from './ai.ta';
 import { buddyTa } from './buddy.ta';
 import type { StringKey } from './en';
 
@@ -128,4 +129,5 @@ export const ta: Record<StringKey, string> = {
   'settings.remindersOff': 'இன்னும் அனுமதி இல்லை. அனுமதிக்க தட்டவும்.',
   'settings.remindersWeb': 'வலை முன்னோட்டத்தில் கிடைக்காது.',
   ...buddyTa,
+  ...aiTa,
 };
