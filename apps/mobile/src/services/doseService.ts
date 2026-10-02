@@ -23,6 +23,7 @@ import type { Repository } from '../db/repository';
 import { useAppStore, type ElderMessage } from '../store/appStore';
 import { clock } from './clock';
 import { newId } from './ids';
+import { deliverAlert, pushLogToFamily } from './linkService';
 import { rescheduleReminders } from './notifications';
 
 export type ElderView = {
@@ -77,6 +78,7 @@ async function afterChange(repo: Repository): Promise<void> {
   useAppStore.getState().bumpData();
   const view = await loadElderView(repo);
   if (view) await rescheduleReminders(view);
+  void pushLogToFamily();
 }
 
 /** Family alert, once per (kind, date, slot). */
@@ -84,8 +86,10 @@ async function raiseAlert(repo: Repository, kind: 'missed' | 'unsure_answer', da
   const id = `al-${kind}-${date}-${slot ?? 'x'}`;
   const existing = (await repo.listAlerts()).find((a) => a.id === id);
   if (existing) return;
-  await repo.saveAlert({ id, kind, date, slot: slot ?? undefined, createdAt: clock.now().toISOString(), readAt: null });
-  // M6: also send to the family phone (Wi-Fi) or by SMS.
+  const alert = { id, kind, date, slot: slot ?? undefined, createdAt: clock.now().toISOString(), readAt: null };
+  await repo.saveAlert(alert);
+  // tell the family: Wi-Fi link first, SMS if that fails (never blocks the elder screen)
+  void deliverAlert(alert);
 }
 
 /** The elder confirmed "I took it" (after the confirm step). Double-dose guard lives in core. */

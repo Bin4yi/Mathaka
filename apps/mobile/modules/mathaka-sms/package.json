@@ -1,0 +1,8 @@
+{
+  "name": "mathaka-sms",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Send an SMS from the elder phone without a tap (Android SmsManager). Local Expo module.",
+  "main": "index.ts",
+  "license": "Apache-2.0"
+}

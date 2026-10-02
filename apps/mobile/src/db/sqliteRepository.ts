@@ -2,6 +2,7 @@ import * as SQLite from 'expo-sqlite';
 import type {
   Alert,
   AuditEntry,
+  CalibrationData,
   DemoData,
   DoseEvent,
   Elder,
@@ -294,6 +295,22 @@ export class SqliteRepository implements Repository {
   async resetAll(): Promise<void> {
     await this.db.withExclusiveTransactionAsync(async (tx) => {
       for (const t of ALL_TABLES) await tx.execAsync(`DELETE FROM ${t}`);
+    });
+  }
+
+  async replaceCalibration(d: CalibrationData): Promise<void> {
+    await this.db.withTransactionAsync(async () => {
+      // children first (foreign keys)
+      for (const t of ['schedule_item', 'pill_profile', 'lookalike_pair', 'voice_clip', 'medicine', 'person', 'elder']) {
+        await this.db.execAsync(`DELETE FROM ${t}`);
+      }
+      await this.saveElder(d.elder);
+      for (const x of d.people) await this.savePerson(x);
+      for (const x of d.medicines) await this.saveMedicine(x);
+      for (const x of d.pillProfiles) await this.savePillProfile(x);
+      for (const x of d.schedule) await this.saveScheduleItem(x);
+      for (const x of d.lookalikes) await this.saveLookalike(x);
+      for (const x of d.voiceClips) await this.saveVoiceClip(x);
     });
   }
 

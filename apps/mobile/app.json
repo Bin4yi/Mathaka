@@ -76,6 +76,15 @@
         {
           "enableOpenCLAndHexagon": false
         }
+      ],
+      "expo-background-task",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Mathaka uses the camera to photograph pills and prescriptions, and to scan the family phone code. Photos stay on this phone.",
+          "microphonePermission": false,
+          "recordAudioAndroid": false
+        }
       ]
     ],
     "experiments": {

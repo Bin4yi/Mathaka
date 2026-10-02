@@ -1,5 +1,6 @@
 import { aiEn } from './ai.en';
 import { buddyEn } from './buddy.en';
+import { syncEn } from './sync.en';
 
 // English strings. Keys are shared by si.ts and ta.ts (TypeScript checks they all exist).
 // Sentences that answer the elder about medicine live in @mathaka/core templates.ts, not here.
@@ -130,6 +131,7 @@ export const en = {
   'settings.remindersWeb': 'Not available in the web preview.',
   ...buddyEn,
   ...aiEn,
+  ...syncEn,
 } as const;
 
 export type StringKey = keyof typeof en;

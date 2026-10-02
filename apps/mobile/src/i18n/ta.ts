@@ -1,6 +1,7 @@
 import { aiTa } from './ai.ta';
 import { buddyTa } from './buddy.ta';
 import type { StringKey } from './en';
+import { syncTa } from './sync.ta';
 
 // Tamil. Please have a native speaker check every line before release.
 export const ta: Record<StringKey, string> = {
@@ -130,4 +131,5 @@ export const ta: Record<StringKey, string> = {
   'settings.remindersWeb': 'வலை முன்னோட்டத்தில் கிடைக்காது.',
   ...buddyTa,
   ...aiTa,
+  ...syncTa,
 };

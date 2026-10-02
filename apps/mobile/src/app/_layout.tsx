@@ -7,7 +7,9 @@ import { Text, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { FONT_FILES } from '../a11y/fonts';
 import { useTheme } from '../a11y/useTheme';
+import { registerElderBackgroundCheck } from '../services/backgroundTask';
 import { checkMissed, loadElderView } from '../services/doseService';
+import { deliverPending, startFamilyListener } from '../services/linkService';
 import { onReminderTap, rescheduleReminders, setupNotifications } from '../services/notifications';
 import { loadAppSettings } from '../services/settings';
 import { useAppStore } from '../store/appStore';
@@ -35,8 +37,15 @@ export default function RootLayout() {
       await checkMissed();
       const view = await loadElderView();
       if (view) await rescheduleReminders(view);
+      await registerElderBackgroundCheck();
+      await deliverPending();
     })();
     return onReminderTap(() => router.push('/elder/dose'));
+  }, [ready, role]);
+
+  // Family phone: listen for the elder phone's log on the home Wi-Fi (dev/preview build).
+  useEffect(() => {
+    if (ready && role === 'family') void startFamilyListener();
   }, [ready, role]);
 
   const done = (fontsLoaded || !!fontError) && (ready || !!error);

@@ -1,0 +1,6 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+  <!-- Alerts to the family by SMS (no mobile data needed). Asked at run time. -->
+  <uses-permission android:name="android.permission.SEND_SMS" />
+  <!-- Tablets without a SIM can still install the app. -->
+  <uses-feature android:name="android.hardware.telephony" android:required="false" />
+</manifest>

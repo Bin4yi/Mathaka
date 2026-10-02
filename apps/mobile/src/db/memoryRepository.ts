@@ -1,6 +1,7 @@
 import type {
   Alert,
   AuditEntry,
+  CalibrationData,
   DemoData,
   DoseEvent,
   Elder,
@@ -156,6 +157,22 @@ export class MemoryRepository implements Repository {
 
   async resetAll() {
     this.t = empty();
+  }
+
+  async replaceCalibration(d: CalibrationData) {
+    this.t.people.clear();
+    this.t.medicines.clear();
+    this.t.pillProfiles.clear();
+    this.t.schedule.clear();
+    this.t.lookalikes.clear();
+    this.t.voiceClips.clear();
+    await this.saveElder(d.elder);
+    for (const x of d.people) await this.savePerson(x);
+    for (const x of d.medicines) await this.saveMedicine(x);
+    for (const x of d.pillProfiles) await this.savePillProfile(x);
+    for (const x of d.schedule) await this.saveScheduleItem(x);
+    for (const x of d.lookalikes) await this.saveLookalike(x);
+    for (const x of d.voiceClips) await this.saveVoiceClip(x);
   }
 
   async importDemo(d: DemoData) {

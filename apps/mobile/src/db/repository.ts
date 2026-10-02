@@ -1,6 +1,7 @@
 import type {
   Alert,
   AuditEntry,
+  CalibrationData,
   DemoData,
   DoseEvent,
   Elder,
@@ -66,6 +67,11 @@ export interface Repository {
 
   /** Wipe all data (keeps nothing). */
   resetAll(): Promise<void>;
+  /**
+   * Elder phone, importing a calibration file: replace elder, people, medicines, pill
+   * profiles, schedule, look-alikes and voice clips. Dose events, alerts and questions stay.
+   */
+  replaceCalibration(data: CalibrationData): Promise<void>;
   /** Write a whole demo data set in one go. */
   importDemo(data: DemoData): Promise<void>;
 }
