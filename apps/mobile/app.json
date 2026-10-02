@@ -22,6 +22,12 @@
         "android.permission.SCHEDULE_EXACT_ALARM",
         "android.permission.POST_NOTIFICATIONS",
         "android.permission.VIBRATE"
+      ],
+      "blockedPermissions": [
+        "android.permission.WRITE_SETTINGS",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.SYSTEM_ALERT_WINDOW"
       ]
     },
     "web": {
@@ -49,7 +55,10 @@
       [
         "expo-notifications",
         {
-          "color": "#145A52"
+          "color": "#145A52",
+          "sounds": [
+            "./assets/sounds/chime_low.wav"
+          ]
         }
       ]
     ],

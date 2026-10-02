@@ -23,15 +23,17 @@ const wrapper = ({ children }: { children: React.ReactNode }) => (
   </SafeAreaProvider>
 );
 
+type Node = { type: unknown; props: Record<string, unknown> };
+
 /** Every touchable on the screen must have a label (TalkBack). */
 function expectAllButtonsLabelled() {
   // native host views that react to touch (what TalkBack actually sees)
   const touchables = screen.UNSAFE_root.findAll(
-    (n) => typeof n.type === 'string' && (typeof n.props.onClick === 'function' || typeof n.props.onResponderRelease === 'function'),
+    (n: Node) => typeof n.type === 'string' && (typeof n.props.onClick === 'function' || typeof n.props.onResponderRelease === 'function'),
   );
   expect(touchables.length).toBeGreaterThan(0);
-  const unlabelled = touchables.filter((b) => !(typeof b.props.accessibilityLabel === 'string' && b.props.accessibilityLabel.length > 0));
-  expect(unlabelled.map((b) => `${String(b.type)} ${b.props.testID ?? ''}`)).toEqual([]);
+  const unlabelled = touchables.filter((b: Node) => !(typeof b.props.accessibilityLabel === 'string' && b.props.accessibilityLabel.length > 0));
+  expect(unlabelled.map((b: Node) => `${String(b.type)} ${String(b.props.testID ?? '')}`)).toEqual([]);
 }
 
 async function tap(testID: string) {

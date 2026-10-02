@@ -13,9 +13,11 @@
     "start": "npm run start -w mathaka-mobile",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "test": "npm run test --workspaces --if-present",
-    "lint": "npm run lint --workspaces --if-present"
+    "lint": "npm run lint --workspaces --if-present",
+    "chime": "node tools/make-chime.mjs"
   },
   "devDependencies": {
+    "@react-native/jest-preset": "^0.86.3",
     "@resvg/resvg-js": "^2.6.2",
     "@testing-library/react-native": "^13.3.3",
     "react-test-renderer": "^19.2.3"

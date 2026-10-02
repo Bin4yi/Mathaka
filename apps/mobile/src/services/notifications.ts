@@ -1,4 +1,5 @@
 import { elderText, planReminders, SLOT_WORD } from '@mathaka/core';
+import Constants, { ExecutionEnvironment } from 'expo-constants';
 import * as Notifications from 'expo-notifications';
 import { Platform } from 'react-native';
 import { useAppStore } from '../store/appStore';
@@ -6,12 +7,16 @@ import { clock } from './clock';
 import type { ElderView } from './doseService';
 
 // Local scheduled notifications (work in Expo Go and when the app is closed).
-// A custom low-tone chime (400–1000 Hz) needs a dev build (expo-notifications "sounds"): M3.
+// Sound: our low-tone chime (tools/make-chime.mjs, 440–660 Hz) in dev/preview builds.
+// Expo Go cannot bundle custom sounds, so it uses the phone's default sound.
 
 export const CHANNEL_ID = 'medicine';
 export const NOTIFICATIONS_SUPPORTED = true;
 /** One vibration pattern used only for medicine: long, pause, long. */
 export const MEDICINE_VIBRATION = [0, 700, 500, 700];
+
+const IN_EXPO_GO = Constants.executionEnvironment === ExecutionEnvironment.StoreClient;
+const SOUND = IN_EXPO_GO ? undefined : 'chime_low.wav';
 
 let ready = false;
 
@@ -32,6 +37,7 @@ export async function setupNotifications(): Promise<void> {
       vibrationPattern: MEDICINE_VIBRATION,
       lockscreenVisibility: Notifications.AndroidNotificationVisibility.PUBLIC,
       bypassDnd: false,
+      sound: SOUND,
     });
   }
   ready = true;
@@ -66,7 +72,7 @@ export async function rescheduleReminders(view: ElderView): Promise<number> {
         title: elderText(view.ctx, 'dose.title', { slot: SLOT_WORD[view.ctx.lang][r.slot] }),
         body: elderText(view.ctx, 'reminder', { slot: SLOT_WORD[view.ctx.lang][r.slot] }),
         data: { slot: r.slot, date: r.date, repeat: r.repeat },
-        sound: true,
+        sound: SOUND ?? true,
         ...(Platform.OS === 'android' ? { vibrate: MEDICINE_VIBRATION } : {}),
       },
       trigger: { type: Notifications.SchedulableTriggerInputTypes.DATE, date: realAt, channelId: CHANNEL_ID },

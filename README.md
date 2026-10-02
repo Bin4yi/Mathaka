@@ -5,7 +5,7 @@ All AI runs **on the phone**, with open-weight models. There is no cloud.
 
 > **A reminder is not remembering.** Alarm apps say *when*. Mathaka also answers *whether* you already took it.
 
-**Status:** prototype, milestone M1 (skeleton). **Not a medical device.** See [Honest limits](#honest-limits).
+**Status:** prototype, milestone M3 (elder flow + cloud build setup). **Not a medical device.** See [Honest limits](#honest-limits).
 
 ## Repo layout
 
@@ -46,7 +46,9 @@ npm run web          # opens http://localhost:8081 in your browser
 
 If the phone can't connect (some routers block it), use `npx expo start --tunnel` inside `apps/mobile`.
 
-On-device AI needs a **development build** made in the cloud with EAS. This comes in M3.
+### Run the real Android app (EAS cloud build)
+
+On-device AI, the low chime and exact reminders need a **development build** made in the cloud. No Android Studio is needed. Follow [docs/eas-build.md](docs/eas-build.md).
 
 ## Checks
 
