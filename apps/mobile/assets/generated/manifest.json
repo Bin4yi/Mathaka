@@ -1,0 +1,1568 @@
+{
+  "generatedAt": "2026-10-02T13:41:08.651Z",
+  "transparent": true,
+  "pillColors": {
+    "white": "#F4F4F2",
+    "cream": "#F3E6C4",
+    "yellow": "#F5D547",
+    "orange": "#F39A3D",
+    "pink": "#F2A2B8",
+    "red": "#D9483B",
+    "blue": "#5B8DD6",
+    "lightblue": "#A9CDEB",
+    "green": "#5DAE6B",
+    "brown": "#9A6B4F",
+    "purple": "#8E6BBF",
+    "grey": "#A7ADB5"
+  },
+  "assets": [
+    {
+      "name": "logo",
+      "group": "brand",
+      "size": 1024,
+      "files": {
+        "1x": "brand/logo.png",
+        "2x": "brand/logo@2x.png",
+        "3x": "brand/logo@3x.png"
+      }
+    },
+    {
+      "name": "adaptive-icon-foreground",
+      "group": "brand",
+      "size": 1024,
+      "files": {
+        "1x": "brand/adaptive-icon-foreground.png",
+        "2x": "brand/adaptive-icon-foreground@2x.png",
+        "3x": "brand/adaptive-icon-foreground@3x.png"
+      }
+    },
+    {
+      "name": "calibration-mat",
+      "group": "print",
+      "size": 1748,
+      "files": {
+        "1x": "print/calibration-mat.png"
+      }
+    },
+    {
+      "name": "time-morning",
+      "group": "icons",
+      "size": 128,
+      "files": {
+        "1x": "icons/time-morning.png",
+        "2x": "icons/time-morning@2x.png",
+        "3x": "icons/time-morning@3x.png"
+      }
+    },
+    {
+      "name": "time-noon",
+      "group": "icons",
+      "size": 128,
+      "files": {
+        "1x": "icons/time-noon.png",
+        "2x": "icons/time-noon@2x.png",
+        "3x": "icons/time-noon@3x.png"
+      }
+    },
+    {
+      "name": "time-evening",
+      "group": "icons",
+      "size": 128,
+      "files": {
+        "1x": "icons/time-evening.png",
+        "2x": "icons/time-evening@2x.png",
+        "3x": "icons/time-evening@3x.png"
+      }
+    },
+    {
+      "name": "time-night",
+      "group": "icons",
+      "size": 128,
+      "files": {
+        "1x": "icons/time-night.png",
+        "2x": "icons/time-night@2x.png",
+        "3x": "icons/time-night@3x.png"
+      }
+    },
+    {
+      "name": "meal-before",
+      "group": "icons",
+      "size": 128,
+      "files": {
+        "1x": "icons/meal-before.png",
+        "2x": "icons/meal-before@2x.png",
+        "3x": "icons/meal-before@3x.png"
+      }
+    },
+    {
+      "name": "meal-after",
+      "group": "icons",
+      "size": 128,
+      "files": {
+        "1x": "icons/meal-after.png",
+        "2x": "icons/meal-after@2x.png",
+        "3x": "icons/meal-after@3x.png"
+      }
+    },
+    {
+      "name": "water-glass",
+      "group": "icons",
+      "size": 128,
+      "files": {
+        "1x": "icons/water-glass.png",
+        "2x": "icons/water-glass@2x.png",
+        "3x": "icons/water-glass@3x.png"
+      }
+    },
+    {
+      "name": "status-taken",
+      "group": "icons",
+      "size": 128,
+      "files": {
+        "1x": "icons/status-taken.png",
+        "2x": "icons/status-taken@2x.png",
+        "3x": "icons/status-taken@3x.png"
+      }
+    },
+    {
+      "name": "status-due",
+      "group": "icons",
+      "size": 128,
+      "files": {
+        "1x": "icons/status-due.png",
+        "2x": "icons/status-due@2x.png",
+        "3x": "icons/status-due@3x.png"
+      }
+    },
+    {
+      "name": "status-missed",
+      "group": "icons",
+      "size": 128,
+      "files": {
+        "1x": "icons/status-missed.png",
+        "2x": "icons/status-missed@2x.png",
+        "3x": "icons/status-missed@3x.png"
+      }
+    },
+    {
+      "name": "status-unsure",
+      "group": "icons",
+      "size": 128,
+      "files": {
+        "1x": "icons/status-unsure.png",
+        "2x": "icons/status-unsure@2x.png",
+        "3x": "icons/status-unsure@3x.png"
+      }
+    },
+    {
+      "name": "ask-did-i-take",
+      "group": "icons",
+      "size": 128,
+      "files": {
+        "1x": "icons/ask-did-i-take.png",
+        "2x": "icons/ask-did-i-take@2x.png",
+        "3x": "icons/ask-did-i-take@3x.png"
+      }
+    },
+    {
+      "name": "speaker",
+      "group": "icons",
+      "size": 128,
+      "files": {
+        "1x": "icons/speaker.png",
+        "2x": "icons/speaker@2x.png",
+        "3x": "icons/speaker@3x.png"
+      }
+    },
+    {
+      "name": "camera",
+      "group": "icons",
+      "size": 128,
+      "files": {
+        "1x": "icons/camera.png",
+        "2x": "icons/camera@2x.png",
+        "3x": "icons/camera@3x.png"
+      }
+    },
+    {
+      "name": "family",
+      "group": "icons",
+      "size": 128,
+      "files": {
+        "1x": "icons/family.png",
+        "2x": "icons/family@2x.png",
+        "3x": "icons/family@3x.png"
+      }
+    },
+    {
+      "name": "pharmacist",
+      "group": "icons",
+      "size": 128,
+      "files": {
+        "1x": "icons/pharmacist.png",
+        "2x": "icons/pharmacist@2x.png",
+        "3x": "icons/pharmacist@3x.png"
+      }
+    },
+    {
+      "name": "elder",
+      "group": "icons",
+      "size": 128,
+      "files": {
+        "1x": "icons/elder.png",
+        "2x": "icons/elder@2x.png",
+        "3x": "icons/elder@3x.png"
+      }
+    },
+    {
+      "name": "lock",
+      "group": "icons",
+      "size": 128,
+      "files": {
+        "1x": "icons/lock.png",
+        "2x": "icons/lock@2x.png",
+        "3x": "icons/lock@3x.png"
+      }
+    },
+    {
+      "name": "refill",
+      "group": "icons",
+      "size": 128,
+      "files": {
+        "1x": "icons/refill.png",
+        "2x": "icons/refill@2x.png",
+        "3x": "icons/refill@3x.png"
+      }
+    },
+    {
+      "name": "calendar-clinic",
+      "group": "icons",
+      "size": 128,
+      "files": {
+        "1x": "icons/calendar-clinic.png",
+        "2x": "icons/calendar-clinic@2x.png",
+        "3x": "icons/calendar-clinic@3x.png"
+      }
+    },
+    {
+      "name": "warning-lookalike",
+      "group": "icons",
+      "size": 128,
+      "files": {
+        "1x": "icons/warning-lookalike.png",
+        "2x": "icons/warning-lookalike@2x.png",
+        "3x": "icons/warning-lookalike@3x.png"
+      }
+    },
+    {
+      "name": "check-photo",
+      "group": "icons",
+      "size": 128,
+      "files": {
+        "1x": "icons/check-photo.png",
+        "2x": "icons/check-photo@2x.png",
+        "3x": "icons/check-photo@3x.png"
+      }
+    },
+    {
+      "name": "pillbox-closed",
+      "group": "illustrations",
+      "size": 512,
+      "files": {
+        "1x": "illustrations/pillbox-closed.png",
+        "2x": "illustrations/pillbox-closed@2x.png",
+        "3x": "illustrations/pillbox-closed@3x.png"
+      }
+    },
+    {
+      "name": "pillbox-open-morning",
+      "group": "illustrations",
+      "size": 512,
+      "files": {
+        "1x": "illustrations/pillbox-open-morning.png",
+        "2x": "illustrations/pillbox-open-morning@2x.png",
+        "3x": "illustrations/pillbox-open-morning@3x.png"
+      }
+    },
+    {
+      "name": "pillbox-open-noon",
+      "group": "illustrations",
+      "size": 512,
+      "files": {
+        "1x": "illustrations/pillbox-open-noon.png",
+        "2x": "illustrations/pillbox-open-noon@2x.png",
+        "3x": "illustrations/pillbox-open-noon@3x.png"
+      }
+    },
+    {
+      "name": "pillbox-open-evening",
+      "group": "illustrations",
+      "size": 512,
+      "files": {
+        "1x": "illustrations/pillbox-open-evening.png",
+        "2x": "illustrations/pillbox-open-evening@2x.png",
+        "3x": "illustrations/pillbox-open-evening@3x.png"
+      }
+    },
+    {
+      "name": "pillbox-open-night",
+      "group": "illustrations",
+      "size": 512,
+      "files": {
+        "1x": "illustrations/pillbox-open-night.png",
+        "2x": "illustrations/pillbox-open-night@2x.png",
+        "3x": "illustrations/pillbox-open-night@3x.png"
+      }
+    },
+    {
+      "name": "big-button-did-i-take",
+      "group": "illustrations",
+      "size": 512,
+      "files": {
+        "1x": "illustrations/big-button-did-i-take.png",
+        "2x": "illustrations/big-button-did-i-take@2x.png",
+        "3x": "illustrations/big-button-did-i-take@3x.png"
+      }
+    },
+    {
+      "name": "phone-alert-taken",
+      "group": "illustrations",
+      "size": 512,
+      "files": {
+        "1x": "illustrations/phone-alert-taken.png",
+        "2x": "illustrations/phone-alert-taken@2x.png",
+        "3x": "illustrations/phone-alert-taken@3x.png"
+      }
+    },
+    {
+      "name": "pill-round-white",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-round-white.png",
+        "2x": "pills/pill-round-white@2x.png",
+        "3x": "pills/pill-round-white@3x.png"
+      },
+      "spec": {
+        "shape": "round",
+        "colorA": "white"
+      }
+    },
+    {
+      "name": "pill-round-cream",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-round-cream.png",
+        "2x": "pills/pill-round-cream@2x.png",
+        "3x": "pills/pill-round-cream@3x.png"
+      },
+      "spec": {
+        "shape": "round",
+        "colorA": "cream"
+      }
+    },
+    {
+      "name": "pill-round-yellow",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-round-yellow.png",
+        "2x": "pills/pill-round-yellow@2x.png",
+        "3x": "pills/pill-round-yellow@3x.png"
+      },
+      "spec": {
+        "shape": "round",
+        "colorA": "yellow"
+      }
+    },
+    {
+      "name": "pill-round-orange",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-round-orange.png",
+        "2x": "pills/pill-round-orange@2x.png",
+        "3x": "pills/pill-round-orange@3x.png"
+      },
+      "spec": {
+        "shape": "round",
+        "colorA": "orange"
+      }
+    },
+    {
+      "name": "pill-round-pink",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-round-pink.png",
+        "2x": "pills/pill-round-pink@2x.png",
+        "3x": "pills/pill-round-pink@3x.png"
+      },
+      "spec": {
+        "shape": "round",
+        "colorA": "pink"
+      }
+    },
+    {
+      "name": "pill-round-red",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-round-red.png",
+        "2x": "pills/pill-round-red@2x.png",
+        "3x": "pills/pill-round-red@3x.png"
+      },
+      "spec": {
+        "shape": "round",
+        "colorA": "red"
+      }
+    },
+    {
+      "name": "pill-round-blue",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-round-blue.png",
+        "2x": "pills/pill-round-blue@2x.png",
+        "3x": "pills/pill-round-blue@3x.png"
+      },
+      "spec": {
+        "shape": "round",
+        "colorA": "blue"
+      }
+    },
+    {
+      "name": "pill-round-lightblue",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-round-lightblue.png",
+        "2x": "pills/pill-round-lightblue@2x.png",
+        "3x": "pills/pill-round-lightblue@3x.png"
+      },
+      "spec": {
+        "shape": "round",
+        "colorA": "lightblue"
+      }
+    },
+    {
+      "name": "pill-round-green",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-round-green.png",
+        "2x": "pills/pill-round-green@2x.png",
+        "3x": "pills/pill-round-green@3x.png"
+      },
+      "spec": {
+        "shape": "round",
+        "colorA": "green"
+      }
+    },
+    {
+      "name": "pill-round-brown",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-round-brown.png",
+        "2x": "pills/pill-round-brown@2x.png",
+        "3x": "pills/pill-round-brown@3x.png"
+      },
+      "spec": {
+        "shape": "round",
+        "colorA": "brown"
+      }
+    },
+    {
+      "name": "pill-round-purple",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-round-purple.png",
+        "2x": "pills/pill-round-purple@2x.png",
+        "3x": "pills/pill-round-purple@3x.png"
+      },
+      "spec": {
+        "shape": "round",
+        "colorA": "purple"
+      }
+    },
+    {
+      "name": "pill-round-grey",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-round-grey.png",
+        "2x": "pills/pill-round-grey@2x.png",
+        "3x": "pills/pill-round-grey@3x.png"
+      },
+      "spec": {
+        "shape": "round",
+        "colorA": "grey"
+      }
+    },
+    {
+      "name": "pill-oval-white",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-oval-white.png",
+        "2x": "pills/pill-oval-white@2x.png",
+        "3x": "pills/pill-oval-white@3x.png"
+      },
+      "spec": {
+        "shape": "oval",
+        "colorA": "white"
+      }
+    },
+    {
+      "name": "pill-oval-cream",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-oval-cream.png",
+        "2x": "pills/pill-oval-cream@2x.png",
+        "3x": "pills/pill-oval-cream@3x.png"
+      },
+      "spec": {
+        "shape": "oval",
+        "colorA": "cream"
+      }
+    },
+    {
+      "name": "pill-oval-yellow",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-oval-yellow.png",
+        "2x": "pills/pill-oval-yellow@2x.png",
+        "3x": "pills/pill-oval-yellow@3x.png"
+      },
+      "spec": {
+        "shape": "oval",
+        "colorA": "yellow"
+      }
+    },
+    {
+      "name": "pill-oval-orange",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-oval-orange.png",
+        "2x": "pills/pill-oval-orange@2x.png",
+        "3x": "pills/pill-oval-orange@3x.png"
+      },
+      "spec": {
+        "shape": "oval",
+        "colorA": "orange"
+      }
+    },
+    {
+      "name": "pill-oval-pink",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-oval-pink.png",
+        "2x": "pills/pill-oval-pink@2x.png",
+        "3x": "pills/pill-oval-pink@3x.png"
+      },
+      "spec": {
+        "shape": "oval",
+        "colorA": "pink"
+      }
+    },
+    {
+      "name": "pill-oval-red",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-oval-red.png",
+        "2x": "pills/pill-oval-red@2x.png",
+        "3x": "pills/pill-oval-red@3x.png"
+      },
+      "spec": {
+        "shape": "oval",
+        "colorA": "red"
+      }
+    },
+    {
+      "name": "pill-oval-blue",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-oval-blue.png",
+        "2x": "pills/pill-oval-blue@2x.png",
+        "3x": "pills/pill-oval-blue@3x.png"
+      },
+      "spec": {
+        "shape": "oval",
+        "colorA": "blue"
+      }
+    },
+    {
+      "name": "pill-oval-lightblue",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-oval-lightblue.png",
+        "2x": "pills/pill-oval-lightblue@2x.png",
+        "3x": "pills/pill-oval-lightblue@3x.png"
+      },
+      "spec": {
+        "shape": "oval",
+        "colorA": "lightblue"
+      }
+    },
+    {
+      "name": "pill-oval-green",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-oval-green.png",
+        "2x": "pills/pill-oval-green@2x.png",
+        "3x": "pills/pill-oval-green@3x.png"
+      },
+      "spec": {
+        "shape": "oval",
+        "colorA": "green"
+      }
+    },
+    {
+      "name": "pill-oval-brown",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-oval-brown.png",
+        "2x": "pills/pill-oval-brown@2x.png",
+        "3x": "pills/pill-oval-brown@3x.png"
+      },
+      "spec": {
+        "shape": "oval",
+        "colorA": "brown"
+      }
+    },
+    {
+      "name": "pill-oval-purple",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-oval-purple.png",
+        "2x": "pills/pill-oval-purple@2x.png",
+        "3x": "pills/pill-oval-purple@3x.png"
+      },
+      "spec": {
+        "shape": "oval",
+        "colorA": "purple"
+      }
+    },
+    {
+      "name": "pill-oval-grey",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-oval-grey.png",
+        "2x": "pills/pill-oval-grey@2x.png",
+        "3x": "pills/pill-oval-grey@3x.png"
+      },
+      "spec": {
+        "shape": "oval",
+        "colorA": "grey"
+      }
+    },
+    {
+      "name": "pill-oblong-white",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-oblong-white.png",
+        "2x": "pills/pill-oblong-white@2x.png",
+        "3x": "pills/pill-oblong-white@3x.png"
+      },
+      "spec": {
+        "shape": "oblong",
+        "colorA": "white"
+      }
+    },
+    {
+      "name": "pill-oblong-cream",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-oblong-cream.png",
+        "2x": "pills/pill-oblong-cream@2x.png",
+        "3x": "pills/pill-oblong-cream@3x.png"
+      },
+      "spec": {
+        "shape": "oblong",
+        "colorA": "cream"
+      }
+    },
+    {
+      "name": "pill-oblong-yellow",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-oblong-yellow.png",
+        "2x": "pills/pill-oblong-yellow@2x.png",
+        "3x": "pills/pill-oblong-yellow@3x.png"
+      },
+      "spec": {
+        "shape": "oblong",
+        "colorA": "yellow"
+      }
+    },
+    {
+      "name": "pill-oblong-orange",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-oblong-orange.png",
+        "2x": "pills/pill-oblong-orange@2x.png",
+        "3x": "pills/pill-oblong-orange@3x.png"
+      },
+      "spec": {
+        "shape": "oblong",
+        "colorA": "orange"
+      }
+    },
+    {
+      "name": "pill-oblong-pink",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-oblong-pink.png",
+        "2x": "pills/pill-oblong-pink@2x.png",
+        "3x": "pills/pill-oblong-pink@3x.png"
+      },
+      "spec": {
+        "shape": "oblong",
+        "colorA": "pink"
+      }
+    },
+    {
+      "name": "pill-oblong-red",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-oblong-red.png",
+        "2x": "pills/pill-oblong-red@2x.png",
+        "3x": "pills/pill-oblong-red@3x.png"
+      },
+      "spec": {
+        "shape": "oblong",
+        "colorA": "red"
+      }
+    },
+    {
+      "name": "pill-oblong-blue",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-oblong-blue.png",
+        "2x": "pills/pill-oblong-blue@2x.png",
+        "3x": "pills/pill-oblong-blue@3x.png"
+      },
+      "spec": {
+        "shape": "oblong",
+        "colorA": "blue"
+      }
+    },
+    {
+      "name": "pill-oblong-lightblue",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-oblong-lightblue.png",
+        "2x": "pills/pill-oblong-lightblue@2x.png",
+        "3x": "pills/pill-oblong-lightblue@3x.png"
+      },
+      "spec": {
+        "shape": "oblong",
+        "colorA": "lightblue"
+      }
+    },
+    {
+      "name": "pill-oblong-green",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-oblong-green.png",
+        "2x": "pills/pill-oblong-green@2x.png",
+        "3x": "pills/pill-oblong-green@3x.png"
+      },
+      "spec": {
+        "shape": "oblong",
+        "colorA": "green"
+      }
+    },
+    {
+      "name": "pill-oblong-brown",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-oblong-brown.png",
+        "2x": "pills/pill-oblong-brown@2x.png",
+        "3x": "pills/pill-oblong-brown@3x.png"
+      },
+      "spec": {
+        "shape": "oblong",
+        "colorA": "brown"
+      }
+    },
+    {
+      "name": "pill-oblong-purple",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-oblong-purple.png",
+        "2x": "pills/pill-oblong-purple@2x.png",
+        "3x": "pills/pill-oblong-purple@3x.png"
+      },
+      "spec": {
+        "shape": "oblong",
+        "colorA": "purple"
+      }
+    },
+    {
+      "name": "pill-oblong-grey",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-oblong-grey.png",
+        "2x": "pills/pill-oblong-grey@2x.png",
+        "3x": "pills/pill-oblong-grey@3x.png"
+      },
+      "spec": {
+        "shape": "oblong",
+        "colorA": "grey"
+      }
+    },
+    {
+      "name": "pill-diamond-white",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-diamond-white.png",
+        "2x": "pills/pill-diamond-white@2x.png",
+        "3x": "pills/pill-diamond-white@3x.png"
+      },
+      "spec": {
+        "shape": "diamond",
+        "colorA": "white"
+      }
+    },
+    {
+      "name": "pill-diamond-cream",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-diamond-cream.png",
+        "2x": "pills/pill-diamond-cream@2x.png",
+        "3x": "pills/pill-diamond-cream@3x.png"
+      },
+      "spec": {
+        "shape": "diamond",
+        "colorA": "cream"
+      }
+    },
+    {
+      "name": "pill-diamond-yellow",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-diamond-yellow.png",
+        "2x": "pills/pill-diamond-yellow@2x.png",
+        "3x": "pills/pill-diamond-yellow@3x.png"
+      },
+      "spec": {
+        "shape": "diamond",
+        "colorA": "yellow"
+      }
+    },
+    {
+      "name": "pill-diamond-orange",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-diamond-orange.png",
+        "2x": "pills/pill-diamond-orange@2x.png",
+        "3x": "pills/pill-diamond-orange@3x.png"
+      },
+      "spec": {
+        "shape": "diamond",
+        "colorA": "orange"
+      }
+    },
+    {
+      "name": "pill-diamond-pink",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-diamond-pink.png",
+        "2x": "pills/pill-diamond-pink@2x.png",
+        "3x": "pills/pill-diamond-pink@3x.png"
+      },
+      "spec": {
+        "shape": "diamond",
+        "colorA": "pink"
+      }
+    },
+    {
+      "name": "pill-diamond-red",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-diamond-red.png",
+        "2x": "pills/pill-diamond-red@2x.png",
+        "3x": "pills/pill-diamond-red@3x.png"
+      },
+      "spec": {
+        "shape": "diamond",
+        "colorA": "red"
+      }
+    },
+    {
+      "name": "pill-diamond-blue",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-diamond-blue.png",
+        "2x": "pills/pill-diamond-blue@2x.png",
+        "3x": "pills/pill-diamond-blue@3x.png"
+      },
+      "spec": {
+        "shape": "diamond",
+        "colorA": "blue"
+      }
+    },
+    {
+      "name": "pill-diamond-lightblue",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-diamond-lightblue.png",
+        "2x": "pills/pill-diamond-lightblue@2x.png",
+        "3x": "pills/pill-diamond-lightblue@3x.png"
+      },
+      "spec": {
+        "shape": "diamond",
+        "colorA": "lightblue"
+      }
+    },
+    {
+      "name": "pill-diamond-green",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-diamond-green.png",
+        "2x": "pills/pill-diamond-green@2x.png",
+        "3x": "pills/pill-diamond-green@3x.png"
+      },
+      "spec": {
+        "shape": "diamond",
+        "colorA": "green"
+      }
+    },
+    {
+      "name": "pill-diamond-brown",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-diamond-brown.png",
+        "2x": "pills/pill-diamond-brown@2x.png",
+        "3x": "pills/pill-diamond-brown@3x.png"
+      },
+      "spec": {
+        "shape": "diamond",
+        "colorA": "brown"
+      }
+    },
+    {
+      "name": "pill-diamond-purple",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-diamond-purple.png",
+        "2x": "pills/pill-diamond-purple@2x.png",
+        "3x": "pills/pill-diamond-purple@3x.png"
+      },
+      "spec": {
+        "shape": "diamond",
+        "colorA": "purple"
+      }
+    },
+    {
+      "name": "pill-diamond-grey",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-diamond-grey.png",
+        "2x": "pills/pill-diamond-grey@2x.png",
+        "3x": "pills/pill-diamond-grey@3x.png"
+      },
+      "spec": {
+        "shape": "diamond",
+        "colorA": "grey"
+      }
+    },
+    {
+      "name": "pill-triangle-white",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-triangle-white.png",
+        "2x": "pills/pill-triangle-white@2x.png",
+        "3x": "pills/pill-triangle-white@3x.png"
+      },
+      "spec": {
+        "shape": "triangle",
+        "colorA": "white"
+      }
+    },
+    {
+      "name": "pill-triangle-cream",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-triangle-cream.png",
+        "2x": "pills/pill-triangle-cream@2x.png",
+        "3x": "pills/pill-triangle-cream@3x.png"
+      },
+      "spec": {
+        "shape": "triangle",
+        "colorA": "cream"
+      }
+    },
+    {
+      "name": "pill-triangle-yellow",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-triangle-yellow.png",
+        "2x": "pills/pill-triangle-yellow@2x.png",
+        "3x": "pills/pill-triangle-yellow@3x.png"
+      },
+      "spec": {
+        "shape": "triangle",
+        "colorA": "yellow"
+      }
+    },
+    {
+      "name": "pill-triangle-orange",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-triangle-orange.png",
+        "2x": "pills/pill-triangle-orange@2x.png",
+        "3x": "pills/pill-triangle-orange@3x.png"
+      },
+      "spec": {
+        "shape": "triangle",
+        "colorA": "orange"
+      }
+    },
+    {
+      "name": "pill-triangle-pink",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-triangle-pink.png",
+        "2x": "pills/pill-triangle-pink@2x.png",
+        "3x": "pills/pill-triangle-pink@3x.png"
+      },
+      "spec": {
+        "shape": "triangle",
+        "colorA": "pink"
+      }
+    },
+    {
+      "name": "pill-triangle-red",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-triangle-red.png",
+        "2x": "pills/pill-triangle-red@2x.png",
+        "3x": "pills/pill-triangle-red@3x.png"
+      },
+      "spec": {
+        "shape": "triangle",
+        "colorA": "red"
+      }
+    },
+    {
+      "name": "pill-triangle-blue",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-triangle-blue.png",
+        "2x": "pills/pill-triangle-blue@2x.png",
+        "3x": "pills/pill-triangle-blue@3x.png"
+      },
+      "spec": {
+        "shape": "triangle",
+        "colorA": "blue"
+      }
+    },
+    {
+      "name": "pill-triangle-lightblue",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-triangle-lightblue.png",
+        "2x": "pills/pill-triangle-lightblue@2x.png",
+        "3x": "pills/pill-triangle-lightblue@3x.png"
+      },
+      "spec": {
+        "shape": "triangle",
+        "colorA": "lightblue"
+      }
+    },
+    {
+      "name": "pill-triangle-green",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-triangle-green.png",
+        "2x": "pills/pill-triangle-green@2x.png",
+        "3x": "pills/pill-triangle-green@3x.png"
+      },
+      "spec": {
+        "shape": "triangle",
+        "colorA": "green"
+      }
+    },
+    {
+      "name": "pill-triangle-brown",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-triangle-brown.png",
+        "2x": "pills/pill-triangle-brown@2x.png",
+        "3x": "pills/pill-triangle-brown@3x.png"
+      },
+      "spec": {
+        "shape": "triangle",
+        "colorA": "brown"
+      }
+    },
+    {
+      "name": "pill-triangle-purple",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-triangle-purple.png",
+        "2x": "pills/pill-triangle-purple@2x.png",
+        "3x": "pills/pill-triangle-purple@3x.png"
+      },
+      "spec": {
+        "shape": "triangle",
+        "colorA": "purple"
+      }
+    },
+    {
+      "name": "pill-triangle-grey",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-triangle-grey.png",
+        "2x": "pills/pill-triangle-grey@2x.png",
+        "3x": "pills/pill-triangle-grey@3x.png"
+      },
+      "spec": {
+        "shape": "triangle",
+        "colorA": "grey"
+      }
+    },
+    {
+      "name": "pill-round-white-scored",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-round-white-scored.png",
+        "2x": "pills/pill-round-white-scored@2x.png",
+        "3x": "pills/pill-round-white-scored@3x.png"
+      },
+      "spec": {
+        "shape": "round",
+        "colorA": "white",
+        "score": true
+      }
+    },
+    {
+      "name": "pill-oblong-white-scored",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-oblong-white-scored.png",
+        "2x": "pills/pill-oblong-white-scored@2x.png",
+        "3x": "pills/pill-oblong-white-scored@3x.png"
+      },
+      "spec": {
+        "shape": "oblong",
+        "colorA": "white",
+        "score": true
+      }
+    },
+    {
+      "name": "pill-round-yellow-scored",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-round-yellow-scored.png",
+        "2x": "pills/pill-round-yellow-scored@2x.png",
+        "3x": "pills/pill-round-yellow-scored@3x.png"
+      },
+      "spec": {
+        "shape": "round",
+        "colorA": "yellow",
+        "score": true
+      }
+    },
+    {
+      "name": "pill-oblong-yellow-scored",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-oblong-yellow-scored.png",
+        "2x": "pills/pill-oblong-yellow-scored@2x.png",
+        "3x": "pills/pill-oblong-yellow-scored@3x.png"
+      },
+      "spec": {
+        "shape": "oblong",
+        "colorA": "yellow",
+        "score": true
+      }
+    },
+    {
+      "name": "pill-round-pink-scored",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-round-pink-scored.png",
+        "2x": "pills/pill-round-pink-scored@2x.png",
+        "3x": "pills/pill-round-pink-scored@3x.png"
+      },
+      "spec": {
+        "shape": "round",
+        "colorA": "pink",
+        "score": true
+      }
+    },
+    {
+      "name": "pill-oblong-pink-scored",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-oblong-pink-scored.png",
+        "2x": "pills/pill-oblong-pink-scored@2x.png",
+        "3x": "pills/pill-oblong-pink-scored@3x.png"
+      },
+      "spec": {
+        "shape": "oblong",
+        "colorA": "pink",
+        "score": true
+      }
+    },
+    {
+      "name": "pill-round-orange-scored",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-round-orange-scored.png",
+        "2x": "pills/pill-round-orange-scored@2x.png",
+        "3x": "pills/pill-round-orange-scored@3x.png"
+      },
+      "spec": {
+        "shape": "round",
+        "colorA": "orange",
+        "score": true
+      }
+    },
+    {
+      "name": "pill-oblong-orange-scored",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-oblong-orange-scored.png",
+        "2x": "pills/pill-oblong-orange-scored@2x.png",
+        "3x": "pills/pill-oblong-orange-scored@3x.png"
+      },
+      "spec": {
+        "shape": "oblong",
+        "colorA": "orange",
+        "score": true
+      }
+    },
+    {
+      "name": "pill-capsule-red-white",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-capsule-red-white.png",
+        "2x": "pills/pill-capsule-red-white@2x.png",
+        "3x": "pills/pill-capsule-red-white@3x.png"
+      },
+      "spec": {
+        "shape": "capsule",
+        "colorA": "red",
+        "colorB": "white",
+        "split": "vertical"
+      }
+    },
+    {
+      "name": "pill-capsule-blue-white",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-capsule-blue-white.png",
+        "2x": "pills/pill-capsule-blue-white@2x.png",
+        "3x": "pills/pill-capsule-blue-white@3x.png"
+      },
+      "spec": {
+        "shape": "capsule",
+        "colorA": "blue",
+        "colorB": "white",
+        "split": "vertical"
+      }
+    },
+    {
+      "name": "pill-capsule-green-cream",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-capsule-green-cream.png",
+        "2x": "pills/pill-capsule-green-cream@2x.png",
+        "3x": "pills/pill-capsule-green-cream@3x.png"
+      },
+      "spec": {
+        "shape": "capsule",
+        "colorA": "green",
+        "colorB": "cream",
+        "split": "vertical"
+      }
+    },
+    {
+      "name": "pill-capsule-yellow-red",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-capsule-yellow-red.png",
+        "2x": "pills/pill-capsule-yellow-red@2x.png",
+        "3x": "pills/pill-capsule-yellow-red@3x.png"
+      },
+      "spec": {
+        "shape": "capsule",
+        "colorA": "yellow",
+        "colorB": "red",
+        "split": "vertical"
+      }
+    },
+    {
+      "name": "pill-capsule-purple-white",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-capsule-purple-white.png",
+        "2x": "pills/pill-capsule-purple-white@2x.png",
+        "3x": "pills/pill-capsule-purple-white@3x.png"
+      },
+      "spec": {
+        "shape": "capsule",
+        "colorA": "purple",
+        "colorB": "white",
+        "split": "vertical"
+      }
+    },
+    {
+      "name": "pill-capsule-orange-brown",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-capsule-orange-brown.png",
+        "2x": "pills/pill-capsule-orange-brown@2x.png",
+        "3x": "pills/pill-capsule-orange-brown@3x.png"
+      },
+      "spec": {
+        "shape": "capsule",
+        "colorA": "orange",
+        "colorB": "brown",
+        "split": "vertical"
+      }
+    },
+    {
+      "name": "pill-capsule-lightblue-blue",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-capsule-lightblue-blue.png",
+        "2x": "pills/pill-capsule-lightblue-blue@2x.png",
+        "3x": "pills/pill-capsule-lightblue-blue@3x.png"
+      },
+      "spec": {
+        "shape": "capsule",
+        "colorA": "lightblue",
+        "colorB": "blue",
+        "split": "vertical"
+      }
+    },
+    {
+      "name": "pill-capsule-pink-white",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-capsule-pink-white.png",
+        "2x": "pills/pill-capsule-pink-white@2x.png",
+        "3x": "pills/pill-capsule-pink-white@3x.png"
+      },
+      "spec": {
+        "shape": "capsule",
+        "colorA": "pink",
+        "colorB": "white",
+        "split": "vertical"
+      }
+    },
+    {
+      "name": "pill-capsule-grey-yellow",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-capsule-grey-yellow.png",
+        "2x": "pills/pill-capsule-grey-yellow@2x.png",
+        "3x": "pills/pill-capsule-grey-yellow@3x.png"
+      },
+      "spec": {
+        "shape": "capsule",
+        "colorA": "grey",
+        "colorB": "yellow",
+        "split": "vertical"
+      }
+    },
+    {
+      "name": "pill-capsule-green-yellow",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-capsule-green-yellow.png",
+        "2x": "pills/pill-capsule-green-yellow@2x.png",
+        "3x": "pills/pill-capsule-green-yellow@3x.png"
+      },
+      "spec": {
+        "shape": "capsule",
+        "colorA": "green",
+        "colorB": "yellow",
+        "split": "vertical"
+      }
+    },
+    {
+      "name": "pill-round-red-white-split",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-round-red-white-split.png",
+        "2x": "pills/pill-round-red-white-split@2x.png",
+        "3x": "pills/pill-round-red-white-split@3x.png"
+      },
+      "spec": {
+        "shape": "round",
+        "colorA": "red",
+        "colorB": "white",
+        "split": "horizontal"
+      }
+    },
+    {
+      "name": "pill-round-blue-white-split",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-round-blue-white-split.png",
+        "2x": "pills/pill-round-blue-white-split@2x.png",
+        "3x": "pills/pill-round-blue-white-split@3x.png"
+      },
+      "spec": {
+        "shape": "round",
+        "colorA": "blue",
+        "colorB": "white",
+        "split": "horizontal"
+      }
+    },
+    {
+      "name": "pill-round-yellow-white-split",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/pill-round-yellow-white-split.png",
+        "2x": "pills/pill-round-yellow-white-split@2x.png",
+        "3x": "pills/pill-round-yellow-white-split@3x.png"
+      },
+      "spec": {
+        "shape": "round",
+        "colorA": "yellow",
+        "colorB": "white",
+        "split": "horizontal"
+      }
+    },
+    {
+      "name": "demo-sugar-pill",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/demo-sugar-pill.png",
+        "2x": "pills/demo-sugar-pill@2x.png",
+        "3x": "pills/demo-sugar-pill@3x.png"
+      },
+      "spec": {
+        "shape": "oblong",
+        "colorA": "white",
+        "score": true,
+        "imprint": "500"
+      }
+    },
+    {
+      "name": "demo-pressure-pill",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/demo-pressure-pill.png",
+        "2x": "pills/demo-pressure-pill@2x.png",
+        "3x": "pills/demo-pressure-pill@3x.png"
+      },
+      "spec": {
+        "shape": "round",
+        "colorA": "pink",
+        "imprint": "5"
+      }
+    },
+    {
+      "name": "demo-cholesterol-pill",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/demo-cholesterol-pill.png",
+        "2x": "pills/demo-cholesterol-pill@2x.png",
+        "3x": "pills/demo-cholesterol-pill@3x.png"
+      },
+      "spec": {
+        "shape": "oval",
+        "colorA": "yellow",
+        "imprint": "10"
+      }
+    },
+    {
+      "name": "demo-heart-capsule",
+      "group": "pills",
+      "size": 512,
+      "files": {
+        "1x": "pills/demo-heart-capsule.png",
+        "2x": "pills/demo-heart-capsule@2x.png",
+        "3x": "pills/demo-heart-capsule@3x.png"
+      },
+      "spec": {
+        "shape": "capsule",
+        "colorA": "red",
+        "colorB": "white",
+        "split": "vertical"
+      }
+    }
+  ]
+}

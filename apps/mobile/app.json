@@ -1,0 +1,46 @@
+{
+  "expo": {
+    "name": "Mathaka",
+    "slug": "mathaka",
+    "scheme": "mathaka",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/generated/brand/logo.png",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "lk.mathaka.app"
+    },
+    "android": {
+      "package": "lk.mathaka.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#E3F1EE",
+        "foregroundImage": "./assets/generated/brand/adaptive-icon-foreground.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "single",
+      "favicon": "./assets/generated/brand/logo.png"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-sqlite",
+      "expo-font",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/generated/brand/logo.png",
+          "imageWidth": 160,
+          "backgroundColor": "#FBF8F1",
+          "dark": { "image": "./assets/generated/brand/logo.png", "backgroundColor": "#14181F" }
+        }
+      ],
+      "expo-localization"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}

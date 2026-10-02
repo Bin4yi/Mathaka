@@ -1,0 +1,26 @@
+{
+  "name": "mathaka",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Mathaka (මතකය) – dementia-friendly medicine helper. On-device open AI.",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "assets": "node tools/generate-assets.mjs --out apps/mobile/assets/generated --preview",
+    "web": "npm run web -w mathaka-mobile",
+    "start": "npm run start -w mathaka-mobile",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2"
+  },
+  "license": "Apache-2.0",
+  "overrides": {
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-native": "0.86.3"
+  }
+}
