@@ -7,3 +7,5 @@ export * from './schedule';
 export * from './dose';
 export * from './templates';
 export * from './pillText';
+export * from './vision';
+export * from './calibration';

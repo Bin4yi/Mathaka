@@ -43,3 +43,7 @@ export function pillWords(lang: Lang, spec: PillSpec): string {
   if (spec.imprint) parts.push(NUMBER[lang].replace('{x}', spec.imprint));
   return parts.join(' · ');
 }
+
+export function shapeWord(lang: Lang, shape: PillShape): string {
+  return SHAPE_WORD[lang][shape];
+}

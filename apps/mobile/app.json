@@ -60,7 +60,17 @@
             "./assets/sounds/chime_low.wav"
           ]
         }
-      ]
+      ],
+      [
+        "expo-image-picker",
+        {
+          "cameraPermission": "Mathaka uses the camera to photograph prescriptions and pills on the calibration mat. Photos stay on this phone.",
+          "photosPermission": "Mathaka can use a photo of a prescription or a pill that you already took. Photos stay on this phone.",
+          "microphonePermission": false
+        }
+      ],
+      "expo-sharing",
+      "expo-asset"
     ],
     "experiments": {
       "typedRoutes": true

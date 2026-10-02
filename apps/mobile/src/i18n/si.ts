@@ -1,3 +1,4 @@
+import { buddySi } from './buddy.si';
 import type { StringKey } from './en';
 
 // Sinhala. Please have a native speaker check every line before release.
@@ -126,4 +127,5 @@ export const si: Record<StringKey, string> = {
   'settings.remindersOn': 'ක්‍රියාත්මකයි: මතක් කිරීම් {n}ක් සැලසුම් කර ඇත.',
   'settings.remindersOff': 'තවම අවසර නැත. දැනුම්දීම්වලට අවසර දීමට තට්ටු කරන්න.',
   'settings.remindersWeb': 'වෙබ් පෙරදසුනේ නොමැත.',
+  ...buddySi,
 };

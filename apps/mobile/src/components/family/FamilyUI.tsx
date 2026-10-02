@@ -1,6 +1,6 @@
 import type { Lang } from '@mathaka/core';
 import type { ReactNode } from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet, TextInput, View } from 'react-native';
 import { SIZE } from '../../a11y/tokens';
 import { useTheme } from '../../a11y/useTheme';
 import { AppText } from '../AppText';
@@ -97,4 +97,69 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   chipRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 10 },
+});
+
+/** Text input with a visible label (and the same label for TalkBack). */
+export function Field({
+  lang,
+  label,
+  value,
+  onChange,
+  keyboard = 'default',
+  placeholder,
+}: {
+  lang: Lang;
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+  keyboard?: 'default' | 'numeric' | 'phone-pad' | 'numbers-and-punctuation';
+  placeholder?: string;
+}) {
+  const theme = useTheme();
+  return (
+    <View style={fieldStyles.field}>
+      <AppText lang={lang} size={16} bold>
+        {label}
+      </AppText>
+      <TextInput
+        value={value}
+        onChangeText={onChange}
+        keyboardType={keyboard}
+        placeholder={placeholder}
+        placeholderTextColor={theme.textMuted}
+        accessibilityLabel={label}
+        style={[fieldStyles.input, { borderColor: theme.border, color: theme.text, backgroundColor: theme.surface }]}
+      />
+    </View>
+  );
+}
+
+/** Small coloured dot + word chip for pill colours (colour is never shown alone). */
+export function ColorChip({ lang, label, color, selected, onPress }: { lang: Lang; label: string; color: string; selected: boolean; onPress: () => void }) {
+  const theme = useTheme();
+  return (
+    <Pressable
+      accessibilityRole="radio"
+      accessibilityState={{ selected }}
+      accessibilityLabel={label}
+      onPress={onPress}
+      style={({ pressed }) => [
+        styles.chip,
+        fieldStyles.colorChip,
+        { borderColor: theme.border, backgroundColor: selected ? theme.primary : theme.surface, opacity: pressed ? 0.8 : 1 },
+      ]}
+    >
+      <View style={[fieldStyles.swatch, { backgroundColor: color, borderColor: '#22283A' }]} />
+      <AppText lang={lang} size={16} bold color={selected ? theme.onPrimary : theme.text}>
+        {label}
+      </AppText>
+    </Pressable>
+  );
+}
+
+const fieldStyles = StyleSheet.create({
+  field: { gap: 6 },
+  input: { minHeight: 52, borderWidth: 2, borderRadius: 12, fontSize: 18, paddingHorizontal: 12 },
+  colorChip: { flexDirection: 'row', gap: 8 },
+  swatch: { width: 22, height: 22, borderRadius: 11, borderWidth: 2 },
 });

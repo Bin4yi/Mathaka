@@ -186,6 +186,7 @@ export default function FamilyHome() {
       </Section>
 
       <FamilyButton lang={lang} primary label={t(lang, 'family.openElder')} onPress={() => router.push('/elder')} />
+      <FamilyButton lang={lang} label={t(lang, 'family.calibration')} onPress={() => router.push('/buddy')} />
       <FamilyButton lang={lang} label={t(lang, 'family.settings')} onPress={() => router.push('/family/settings')} />
       {DEMO_MODE && (
         <FamilyButton

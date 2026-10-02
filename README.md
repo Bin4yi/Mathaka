@@ -13,7 +13,7 @@ All AI runs **on the phone**, with open-weight models. There is no cloud.
 |---|---|
 | `apps/mobile/` | Expo app (TypeScript, expo-router). One app with two roles: family/buddy phone and elder phone. |
 | `packages/core/` | Pure TypeScript logic shared by the app and the Node eval (types, schedule, demo seed, AI contracts). |
-| `tools/` | `generate-assets.mjs` (icons, pills, logo). The mat maker comes in M4. |
+| `tools/` | `generate-assets.mjs` (icons, pills, logo), `make-mat.ts` (printable calibration mat), `make-chime.mjs` (low reminder sound), `web-shots.mjs` (screenshots). |
 | `helper/` | Optional laptop helper (FastAPI + Ollama + Laya), from M5. |
 | `firmware/esp32/` | Optional BLE pill box, from M9. |
 | `eval/` | Frozen test sets, eval scripts and results, from M7/M10. |
