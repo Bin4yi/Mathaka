@@ -10,6 +10,8 @@ describe('theme contrast', () => {
       ['textMuted/bg', theme.textMuted, theme.bg],
       ['textMuted/surface', theme.textMuted, theme.surface],
       ['onPrimary/primary', theme.onPrimary, theme.primary],
+      ['onPrimary/gradient-start', theme.onPrimary, theme.primaryGradient[0]],
+      ['onPrimary/gradient-end', theme.onPrimary, theme.primaryGradient[1]],
       ['onSecondary/secondary', theme.onSecondary, theme.secondary],
     ];
     // Family-side status colours: AA (4.5:1).
@@ -17,6 +19,7 @@ describe('theme contrast', () => {
       ['taken/surface', theme.taken, theme.surface],
       ['missed/surface', theme.missed, theme.surface],
       ['border/bg', theme.border, theme.bg],
+      ['outline/bg (non-text 3:1 is the rule; we ask 4.5)', theme.outline, theme.bg],
     ];
 
     it.each(elderPairs)(`${theme.name}: %s >= 7`, (_n, a, b) => {

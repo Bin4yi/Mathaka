@@ -3,10 +3,10 @@ import { router } from 'expo-router';
 import { Image, Pressable, StyleSheet, View } from 'react-native';
 import { Assets } from '../../../assets/generated';
 import { SIZE } from '../../a11y/tokens';
-import { useTheme } from '../../a11y/useTheme';
 import { t, type StringKey } from '../../i18n';
 import { AppText } from '../AppText';
 import { Icon } from '../Icon';
+import { GlassPanel } from '../../ui/surfaces';
 
 type Part = 'morning' | 'noon' | 'evening' | 'night';
 
@@ -31,13 +31,12 @@ const PART_ICON = {
  * (press and hold 3 seconds); elder mode never shows how to exit.
  */
 export function OrientationStrip({ lang, now }: { lang: Lang; now: Date }) {
-  const theme = useTheme();
   const part = partOfDay(now);
   const day = t(lang, `day.${now.getDay()}` as StringKey);
   const partWord = t(lang, `part.${part}` as StringKey);
 
   return (
-    <View style={[styles.strip, { borderColor: theme.border, backgroundColor: theme.surface }]}>
+    <GlassPanel outlined style={styles.strip}>
       <Pressable
         delayLongPress={3000}
         onLongPress={() => router.push('/pin')}
@@ -57,19 +56,12 @@ export function OrientationStrip({ lang, now }: { lang: Lang; now: Date }) {
         </AppText>
       </View>
       <Icon source={PART_ICON[part]} size={64} />
-    </View>
+    </GlassPanel>
   );
 }
 
 const styles = StyleSheet.create({
-  strip: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 12,
-    borderWidth: 3,
-    borderRadius: SIZE.radius,
-    padding: 12,
-  },
+  strip: { flexDirection: 'row', alignItems: 'center', gap: 14, padding: 14 },
   flex: { flex: 1 },
   logo: { width: 56, height: 56 },
 });

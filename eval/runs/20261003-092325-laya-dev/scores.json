@@ -1,0 +1,313 @@
+{
+  "intents": {
+    "set": "dev",
+    "n": 48,
+    "engines": {
+      "laya-multilingual (pytorch)": {
+        "all": {
+          "n": 48,
+          "accuracy": 0.479,
+          "accuracy_by_form": {
+            "en": 0.75,
+            "mixed": 0.333,
+            "si": 0.417,
+            "singlish": 0.417
+          },
+          "ece": 0.333,
+          "threshold": 0.85,
+          "escalation_rate": 0.438,
+          "wrong_action_rate": 0.25,
+          "wrong_actions": [
+            "dev-i-18",
+            "dev-i-24",
+            "dev-y-01",
+            "dev-y-03",
+            "dev-y-04",
+            "dev-y-07",
+            "dev-y-09",
+            "dev-y-10",
+            "dev-y-19",
+            "dev-y-21",
+            "dev-y-22",
+            "dev-y-24"
+          ],
+          "latency_ms_median": 1946.8,
+          "latency_ms_p95": 8953.8
+        },
+        "intent": {
+          "n": 24,
+          "accuracy": 0.542,
+          "accuracy_by_form": {
+            "en": 0.833,
+            "mixed": 0.333,
+            "si": 0.5,
+            "singlish": 0.5
+          },
+          "ece": 0.272,
+          "threshold": 0.85,
+          "escalation_rate": 0.667,
+          "wrong_action_rate": 0.083,
+          "wrong_actions": [
+            "dev-i-18",
+            "dev-i-24"
+          ],
+          "latency_ms_median": 2100.2,
+          "latency_ms_p95": 19655.0
+        },
+        "yesno": {
+          "n": 24,
+          "accuracy": 0.417,
+          "accuracy_by_form": {
+            "en": 0.667,
+            "mixed": 0.333,
+            "si": 0.333,
+            "singlish": 0.333
+          },
+          "ece": 0.468,
+          "threshold": 0.85,
+          "escalation_rate": 0.208,
+          "wrong_action_rate": 0.417,
+          "wrong_actions": [
+            "dev-y-01",
+            "dev-y-03",
+            "dev-y-04",
+            "dev-y-07",
+            "dev-y-09",
+            "dev-y-10",
+            "dev-y-19",
+            "dev-y-21",
+            "dev-y-22",
+            "dev-y-24"
+          ],
+          "latency_ms_median": 1794.2,
+          "latency_ms_p95": 5825.7
+        },
+        "sweep": [
+          {
+            "threshold": 0.5,
+            "escalation_rate": 0.104,
+            "wrong_action_rate": 0.438
+          },
+          {
+            "threshold": 0.6,
+            "escalation_rate": 0.229,
+            "wrong_action_rate": 0.375
+          },
+          {
+            "threshold": 0.7,
+            "escalation_rate": 0.25,
+            "wrong_action_rate": 0.354
+          },
+          {
+            "threshold": 0.8,
+            "escalation_rate": 0.396,
+            "wrong_action_rate": 0.292
+          },
+          {
+            "threshold": 0.85,
+            "escalation_rate": 0.438,
+            "wrong_action_rate": 0.25
+          },
+          {
+            "threshold": 0.9,
+            "escalation_rate": 0.542,
+            "wrong_action_rate": 0.208
+          },
+          {
+            "threshold": 0.95,
+            "escalation_rate": 0.583,
+            "wrong_action_rate": 0.188
+          }
+        ]
+      },
+      "laya-english (pytorch)": {
+        "all": {
+          "n": 48,
+          "accuracy": 0.542,
+          "accuracy_by_form": {
+            "en": 1.0,
+            "mixed": 0.667,
+            "si": 0.25,
+            "singlish": 0.25
+          },
+          "ece": 0.218,
+          "threshold": 0.85,
+          "escalation_rate": 0.812,
+          "wrong_action_rate": 0.062,
+          "wrong_actions": [
+            "dev-i-08",
+            "dev-i-22",
+            "dev-i-24"
+          ],
+          "latency_ms_median": 4041.1,
+          "latency_ms_p95": 7440.2
+        },
+        "intent": {
+          "n": 24,
+          "accuracy": 0.542,
+          "accuracy_by_form": {
+            "en": 1.0,
+            "mixed": 0.5,
+            "si": 0.333,
+            "singlish": 0.333
+          },
+          "ece": 0.24,
+          "threshold": 0.85,
+          "escalation_rate": 0.625,
+          "wrong_action_rate": 0.125,
+          "wrong_actions": [
+            "dev-i-08",
+            "dev-i-22",
+            "dev-i-24"
+          ],
+          "latency_ms_median": 3184.4,
+          "latency_ms_p95": 5884.3
+        },
+        "yesno": {
+          "n": 24,
+          "accuracy": 0.542,
+          "accuracy_by_form": {
+            "en": 1.0,
+            "mixed": 0.833,
+            "si": 0.167,
+            "singlish": 0.167
+          },
+          "ece": 0.239,
+          "threshold": 0.85,
+          "escalation_rate": 1.0,
+          "wrong_action_rate": 0.0,
+          "wrong_actions": [],
+          "latency_ms_median": 6086.5,
+          "latency_ms_p95": 7440.2
+        },
+        "sweep": [
+          {
+            "threshold": 0.5,
+            "escalation_rate": 0.25,
+            "wrong_action_rate": 0.354
+          },
+          {
+            "threshold": 0.6,
+            "escalation_rate": 0.458,
+            "wrong_action_rate": 0.167
+          },
+          {
+            "threshold": 0.7,
+            "escalation_rate": 0.646,
+            "wrong_action_rate": 0.104
+          },
+          {
+            "threshold": 0.8,
+            "escalation_rate": 0.792,
+            "wrong_action_rate": 0.083
+          },
+          {
+            "threshold": 0.85,
+            "escalation_rate": 0.812,
+            "wrong_action_rate": 0.062
+          },
+          {
+            "threshold": 0.9,
+            "escalation_rate": 0.854,
+            "wrong_action_rate": 0.021
+          },
+          {
+            "threshold": 0.95,
+            "escalation_rate": 0.896,
+            "wrong_action_rate": 0.0
+          }
+        ]
+      },
+      "rule (buttons only)": {
+        "all": {
+          "n": 48,
+          "accuracy": 0.271,
+          "accuracy_by_form": {
+            "en": 0.25,
+            "mixed": 0.25,
+            "si": 0.333,
+            "singlish": 0.25
+          },
+          "ece": 0.729,
+          "threshold": 0.85,
+          "escalation_rate": 1.0,
+          "wrong_action_rate": 0.0,
+          "wrong_actions": [],
+          "latency_ms_median": 0.0,
+          "latency_ms_p95": 0.0
+        },
+        "intent": {
+          "n": 24,
+          "accuracy": 0.208,
+          "accuracy_by_form": {
+            "en": 0.167,
+            "mixed": 0.167,
+            "si": 0.333,
+            "singlish": 0.167
+          },
+          "ece": 0.792,
+          "threshold": 0.85,
+          "escalation_rate": 1.0,
+          "wrong_action_rate": 0.0,
+          "wrong_actions": [],
+          "latency_ms_median": 0.0,
+          "latency_ms_p95": 0.0
+        },
+        "yesno": {
+          "n": 24,
+          "accuracy": 0.333,
+          "accuracy_by_form": {
+            "en": 0.333,
+            "mixed": 0.333,
+            "si": 0.333,
+            "singlish": 0.333
+          },
+          "ece": 0.667,
+          "threshold": 0.85,
+          "escalation_rate": 1.0,
+          "wrong_action_rate": 0.0,
+          "wrong_actions": [],
+          "latency_ms_median": 0.0,
+          "latency_ms_p95": 0.0
+        },
+        "sweep": [
+          {
+            "threshold": 0.5,
+            "escalation_rate": 1.0,
+            "wrong_action_rate": 0.0
+          },
+          {
+            "threshold": 0.6,
+            "escalation_rate": 1.0,
+            "wrong_action_rate": 0.0
+          },
+          {
+            "threshold": 0.7,
+            "escalation_rate": 1.0,
+            "wrong_action_rate": 0.0
+          },
+          {
+            "threshold": 0.8,
+            "escalation_rate": 1.0,
+            "wrong_action_rate": 0.0
+          },
+          {
+            "threshold": 0.85,
+            "escalation_rate": 1.0,
+            "wrong_action_rate": 0.0
+          },
+          {
+            "threshold": 0.9,
+            "escalation_rate": 1.0,
+            "wrong_action_rate": 0.0
+          },
+          {
+            "threshold": 0.95,
+            "escalation_rate": 1.0,
+            "wrong_action_rate": 0.0
+          }
+        ]
+      }
+    }
+  }
+}

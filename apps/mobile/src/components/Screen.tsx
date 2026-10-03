@@ -1,20 +1,22 @@
 import type { ReactNode } from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { SIZE } from '../a11y/tokens';
-import { useTheme } from '../a11y/useTheme';
+import { AppBackground } from '../ui/surfaces';
 
-/** Every screen scrolls, so big system font sizes wrap instead of being cut off. */
+/** Family / Buddy screens: calm gradient, content scrolls (big system fonts wrap, never clip). */
 export function Screen({ children }: { children: ReactNode }) {
-  const theme = useTheme();
   return (
-    <SafeAreaView style={[styles.flex, { backgroundColor: theme.bg }]}>
-      <ScrollView contentContainerStyle={styles.content}>{children}</ScrollView>
-    </SafeAreaView>
+    <View style={styles.flex}>
+      <AppBackground />
+      <SafeAreaView style={styles.flex}>
+        <ScrollView contentContainerStyle={styles.content}>{children}</ScrollView>
+      </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   flex: { flex: 1 },
-  content: { padding: SIZE.gap, gap: SIZE.gap, maxWidth: 720, width: '100%', alignSelf: 'center' },
+  content: { padding: SIZE.gap + 4, gap: SIZE.gap + 4, maxWidth: 760, width: '100%', alignSelf: 'center', paddingBottom: 48 },
 });

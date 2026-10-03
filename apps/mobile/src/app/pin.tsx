@@ -9,6 +9,7 @@ import { DEMO_MODE } from '../config';
 import { t } from '../i18n';
 import { checkPin } from '../services/settings';
 import { useAppStore } from '../store/appStore';
+import { neuShadow } from '../ui/surfaces';
 
 const KEYS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'back', '0', 'del'] as const;
 
@@ -66,7 +67,10 @@ export default function PinScreen() {
               accessibilityRole="button"
               accessibilityLabel={k.length === 1 ? t(lang, 'pin.digit', { d: k }) : label}
               onPress={() => void press(k)}
-              style={({ pressed }) => [styles.key, { borderColor: theme.border, backgroundColor: theme.surface, opacity: pressed ? 0.7 : 1 }]}
+              style={({ pressed }) => [
+                styles.key,
+                { borderColor: theme.border, borderWidth: theme.name === 'highContrast' ? 2 : 0, backgroundColor: theme.surface, boxShadow: neuShadow(theme, 7, pressed) },
+              ]}
             >
               <AppText lang={k.length === 1 ? 'en' : lang} size={k.length === 1 ? 32 : 18} bold>
                 {label}
@@ -82,6 +86,6 @@ export default function PinScreen() {
 const styles = StyleSheet.create({
   dots: { flexDirection: 'row', gap: 16, alignSelf: 'center', marginVertical: 8 },
   dot: { width: 24, height: 24, borderRadius: 12, borderWidth: 3 },
-  pad: { flexDirection: 'row', flexWrap: 'wrap', gap: SIZE.gap, justifyContent: 'center', maxWidth: 360, alignSelf: 'center' },
-  key: { width: 96, height: 80, borderWidth: 2, borderRadius: SIZE.radius, alignItems: 'center', justifyContent: 'center' },
+  pad: { flexDirection: 'row', flexWrap: 'wrap', gap: SIZE.gap + 6, justifyContent: 'center', maxWidth: 360, alignSelf: 'center' },
+  key: { width: 96, height: 80, borderRadius: 40, alignItems: 'center', justifyContent: 'center' },
 });

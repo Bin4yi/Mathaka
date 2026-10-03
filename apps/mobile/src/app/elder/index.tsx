@@ -13,6 +13,7 @@ import { useElderView } from '../../hooks/useElderView';
 import { t } from '../../i18n';
 import { askDidITake, homeMessage } from '../../services/doseService';
 import { useAppStore } from '../../store/appStore';
+import { NeuCard } from '../../ui/surfaces';
 
 /** Elder home. One message, a clock, the pill box, and at most two big buttons. */
 export default function ElderHome() {
@@ -56,12 +57,14 @@ export default function ElderHome() {
     >
       <MessageCard lang={lang} text={homeMessage(view)} />
 
+      <NeuCard outlined style={styles.clockCard}>
       <View style={styles.clockRow} accessible accessibilityLabel={t(lang, 'elder.timeNow', { time: clockText(minutesOfDay(view.now)) })}>
         <AnalogClock date={view.now} size={150} />
-        <AppText lang="en" size={SIZE.elderMain} bold>
+        <AppText lang="en" size={52} bold>
           {clockText(minutesOfDay(view.now))}
         </AppText>
       </View>
+      </NeuCard>
 
       <VirtualPillBox lang={lang} states={view.states} lit={view.open?.slot ?? null} />
     </ElderScreen>
@@ -73,5 +76,6 @@ function cap<S extends string>(s: S): Capitalize<S> {
 }
 
 const styles = StyleSheet.create({
-  clockRow: { flexDirection: 'row', alignItems: 'center', gap: SIZE.gap, flexWrap: 'wrap' },
+  clockCard: { padding: SIZE.gap },
+  clockRow: { flexDirection: 'row', alignItems: 'center', gap: SIZE.gap + 8, flexWrap: 'wrap', justifyContent: 'center' },
 });

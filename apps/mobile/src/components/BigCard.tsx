@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import { Pressable, StyleSheet, type ViewStyle } from 'react-native';
 import { SIZE } from '../a11y/tokens';
 import { useTheme } from '../a11y/useTheme';
+import { neuShadow } from '../ui/surfaces';
 
 type Props = {
   label: string;
@@ -25,7 +26,11 @@ export function BigCard({ label, hint, onPress, children, style }: Props) {
       onPress={onPress}
       style={({ pressed }) => [
         styles.card,
-        { backgroundColor: theme.surface, borderColor: theme.border, opacity: pressed ? 0.85 : 1 },
+        {
+          backgroundColor: theme.surface,
+          borderColor: theme.name === 'highContrast' ? theme.border : theme.outline,
+          boxShadow: neuShadow(theme, pressed ? 4 : 10, pressed),
+        },
         style,
       ]}
     >
@@ -37,7 +42,7 @@ export function BigCard({ label, hint, onPress, children, style }: Props) {
 const styles = StyleSheet.create({
   card: {
     minHeight: SIZE.mainTarget,
-    borderWidth: 3,
+    borderWidth: 2,
     borderRadius: SIZE.radius,
     padding: SIZE.gap,
     flexDirection: 'row',

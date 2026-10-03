@@ -10,6 +10,7 @@ import { speak } from '../../services/speech';
 import { useAppStore } from '../../store/appStore';
 import { AppText } from '../AppText';
 import { Icon } from '../Icon';
+import { NeuCard, neuShadow } from '../../ui/surfaces';
 
 type Props = {
   lang: Lang;
@@ -34,7 +35,7 @@ export function MessageCard({ lang, text, autoSpeak, picture }: Props) {
   }, [autoSpeak, text, lang, rate]);
 
   return (
-    <View style={[styles.card, { backgroundColor: theme.surface, borderColor: theme.border }]}>
+    <NeuCard outlined style={styles.card} depth={10}>
       <View style={styles.row}>
         {picture && <Icon source={picture} size={88} />}
         <AppText lang={lang} size={SIZE.elderMain} bold accessibilityLiveRegion="polite" style={styles.flex}>
@@ -45,19 +46,27 @@ export function MessageCard({ lang, text, autoSpeak, picture }: Props) {
         accessibilityRole="button"
         accessibilityLabel={t(lang, 'elder.btn.sayAgain')}
         onPress={sayAgain}
-        style={({ pressed }) => [styles.say, { borderColor: theme.border, opacity: pressed ? 0.8 : 1 }]}
+        style={({ pressed }) => [
+          styles.say,
+          {
+            backgroundColor: theme.surface,
+            boxShadow: neuShadow(theme, 5, pressed),
+            borderWidth: theme.name === 'highContrast' ? 2 : 0,
+            borderColor: theme.border,
+          },
+        ]}
       >
         <Icon source={Assets.icons.speaker} size={44} />
         <AppText lang={lang} size={SIZE.elderSmall} bold>
           {t(lang, 'elder.btn.sayAgain')}
         </AppText>
       </Pressable>
-    </View>
+    </NeuCard>
   );
 }
 
 const styles = StyleSheet.create({
-  card: { borderWidth: 3, borderRadius: SIZE.radius, padding: SIZE.gap, gap: SIZE.gap },
+  card: { padding: SIZE.gap + 4, gap: SIZE.gap },
   row: { flexDirection: 'row', alignItems: 'center', gap: SIZE.gap },
   flex: { flex: 1 },
   say: {
@@ -65,7 +74,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 12,
-    borderWidth: 2,
     borderRadius: SIZE.radius,
     paddingHorizontal: SIZE.gap,
     alignSelf: 'flex-start',

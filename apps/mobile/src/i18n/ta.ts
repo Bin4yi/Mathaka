@@ -1,6 +1,7 @@
 import { aiTa } from './ai.ta';
 import { buddyTa } from './buddy.ta';
 import type { StringKey } from './en';
+import { uiTa } from './ui.ta';
 import { syncTa } from './sync.ta';
 
 // Tamil. Please have a native speaker check every line before release.
@@ -132,4 +133,5 @@ export const ta: Record<StringKey, string> = {
   ...buddyTa,
   ...aiTa,
   ...syncTa,
+  ...uiTa,
 };

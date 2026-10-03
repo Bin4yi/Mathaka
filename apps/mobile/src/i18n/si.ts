@@ -1,6 +1,7 @@
 import { aiSi } from './ai.si';
 import { buddySi } from './buddy.si';
 import type { StringKey } from './en';
+import { uiSi } from './ui.si';
 import { syncSi } from './sync.si';
 
 // Sinhala. Please have a native speaker check every line before release.
@@ -132,4 +133,5 @@ export const si: Record<StringKey, string> = {
   ...buddySi,
   ...aiSi,
   ...syncSi,
+  ...uiSi,
 };

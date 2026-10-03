@@ -7,6 +7,7 @@ import { t } from '../../i18n';
 import { AppText } from '../AppText';
 import { Backdrop } from '../Icon';
 import { PillGraphic } from '../PillGraphic';
+import { NeuCard } from '../../ui/surfaces';
 
 export function countText(lang: Lang, n: number): string {
   return n === 1 ? t(lang, 'elder.tablet') : t(lang, 'elder.tablets', { n });
@@ -29,8 +30,9 @@ export function SlotPillCard({ lang, pill }: { lang: Lang; pill: SlotPill }) {
       accessibilityLabel={pillLabel(lang, pill)}
       accessibilityHint={t(lang, 'elder.pillHint')}
       onPress={() => router.push({ pathname: '/elder/pill/[id]', params: { id: pill.item.id } })}
-      style={({ pressed }) => [styles.card, { borderColor: theme.border, backgroundColor: theme.surface, opacity: pressed ? 0.9 : 1 }]}
     >
+      {({ pressed }) => (
+      <NeuCard outlined depth={pressed ? 4 : 10} inset={pressed} style={styles.card}>
       <View style={styles.pictures}>
         {spec && (
           <Backdrop radius={SIZE.radius} pad={8}>
@@ -50,12 +52,14 @@ export function SlotPillCard({ lang, pill }: { lang: Lang; pill: SlotPill }) {
           {pillWords(lang, spec)}
         </AppText>
       )}
+      </NeuCard>
+      )}
     </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
-  card: { borderWidth: 3, borderRadius: SIZE.radius, padding: SIZE.gap, alignItems: 'center', gap: 4 },
+  card: { padding: SIZE.gap + 4, alignItems: 'center', gap: 6 },
   pictures: { flexDirection: 'row', alignItems: 'center', gap: 8, flexWrap: 'wrap', justifyContent: 'center' },
   photo: { width: 96, height: 96, borderRadius: 12 },
 });

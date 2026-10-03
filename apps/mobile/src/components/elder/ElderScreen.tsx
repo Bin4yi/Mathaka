@@ -4,7 +4,7 @@ import { ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useIdleHome } from '../../a11y/hooks';
 import { SIZE } from '../../a11y/tokens';
-import { useTheme } from '../../a11y/useTheme';
+import { AppBackground, GlassPanel } from '../../ui/surfaces';
 import { OrientationStrip } from './OrientationStrip';
 
 type Props = {
@@ -19,28 +19,28 @@ type Props = {
 
 /** Same frame for every elder screen: orientation strip, content (scrolls), buttons at the bottom. */
 export function ElderScreen({ lang, now, children, actions, idleHome = true }: Props) {
-  const theme = useTheme();
   const touched = useIdleHome(idleHome);
   return (
-    <SafeAreaView style={[styles.flex, { backgroundColor: theme.bg }]} onTouchStart={touched}>
-      <ScrollView contentContainerStyle={styles.content}>
-        <OrientationStrip lang={lang} now={now} />
-        {children}
-      </ScrollView>
-      <View style={[styles.actions, { borderColor: theme.border, backgroundColor: theme.bg }]}>{actions}</View>
-    </SafeAreaView>
+    <View style={styles.flex} onTouchStart={touched}>
+      <AppBackground />
+      <SafeAreaView style={styles.flex}>
+        <ScrollView contentContainerStyle={styles.content}>
+          <OrientationStrip lang={lang} now={now} />
+          {children}
+        </ScrollView>
+        <View style={styles.actionsWrap}>
+          <GlassPanel style={styles.actions} radius={30}>
+            {actions}
+          </GlassPanel>
+        </View>
+      </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   flex: { flex: 1 },
-  content: { padding: SIZE.gap, gap: SIZE.gap, maxWidth: 720, width: '100%', alignSelf: 'center' },
-  actions: {
-    padding: SIZE.gap,
-    gap: SIZE.gap,
-    borderTopWidth: 2,
-    maxWidth: 720,
-    width: '100%',
-    alignSelf: 'center',
-  },
+  content: { padding: SIZE.gap + 2, gap: SIZE.gap + 4, maxWidth: 720, width: '100%', alignSelf: 'center', paddingBottom: 24 },
+  actionsWrap: { paddingHorizontal: 12, paddingBottom: 12, maxWidth: 720, width: '100%', alignSelf: 'center' },
+  actions: { padding: 14, gap: 14 },
 });
