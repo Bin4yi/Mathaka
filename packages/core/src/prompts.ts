@@ -75,3 +75,17 @@ export function decisionFromLabel(out: { label: string; confidence: number }, op
   const rest = (1 - out.confidence) / Math.max(1, options.length - 1);
   return toDecision(Object.fromEntries(options.map((o) => [o, o === out.label ? out.confidence : rest])));
 }
+
+// ---------- decision layer wording (Laya on the phone, Laya/Gemma in the eval) ----------
+
+export type DecisionTask = 'intent' | 'yesno';
+export const INTENT_OPTIONS = ['did_i_take', 'when_next', 'which_pills', 'other'] as const;
+export const YESNO_OPTIONS = ['yes', 'no', 'unsure'] as const;
+
+export function decisionWording(task: DecisionTask, text: string): { state: string; question: string; options: Record<string, string> } {
+  const d = PROMPTS.decisions[task];
+  return { state: d.state.replace('{text}', text.replace(/"/g, "'")), question: d.question, options: d.options };
+}
+
+/** Plain descriptions of every decision label (helps the decision model; labels stay short ids). */
+export const DECISION_HINTS: Record<string, string> = { ...PROMPTS.decisions.intent.options, ...PROMPTS.decisions.yesno.options };

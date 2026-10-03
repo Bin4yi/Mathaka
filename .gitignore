@@ -62,3 +62,6 @@ coverage/
 # python helper
 helper/.venv*/
 .pytest_cache/
+
+# eval
+eval/.venv*/

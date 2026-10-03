@@ -37,10 +37,13 @@ export function combinePhotos(list: PillFeatures[]): CombinedLook | null {
     ? { length: median(sized.map((f) => f.sizeMm!.length)), width: median(sized.map((f) => f.sizeMm!.width)) }
     : undefined;
   const spec: PillSpec = { shape, colorA, colorB, split, score: fs.some((f) => f.score), sizeMm };
+  // Two-colour pills: which half is "A" depends on how the pill lies in each photo.
+  // Line every photo up with the majority colour A before averaging (else red+white -> pink).
+  const aligned = fs.map((f) => (f.split !== 'none' && f.colorA !== colorA && f.colorB === colorA && f.labB ? { ...f, labA: f.labB, labB: f.labA } : f));
   const look: PillLook = {
     ...spec,
-    labA: meanLab(fs.filter((f) => f.colorA === colorA || f.split !== 'none').map((f) => f.labA)),
-    labB: colorB ? meanLab(twoTone.filter((f) => f.labB).map((f) => f.labB!)) : undefined,
+    labA: meanLab(aligned.filter((f) => f.colorA === colorA || f.split !== 'none').map((f) => f.labA)),
+    labB: colorB ? meanLab(aligned.filter((f) => f.split !== 'none' && f.labB).map((f) => f.labB!)) : undefined,
   };
   const agree = fs.every((f) => f.shape === shape && f.colorA === colorA);
   const confidence = Math.min(...fs.map((f) => f.confidence)) * (agree ? 1 : 0.7);

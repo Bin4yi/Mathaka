@@ -1,0 +1,40 @@
+{"id":"d01","now":"06:00","events":[],"action":"ask","expect":{"kind":"not_yet","next":"morning"},"note":"before the morning window","active":["morning","noon","evening","night"]}
+{"id":"d02","now":"07:00","events":[],"action":"ask","expect":{"kind":"not_yet","next":"morning"},"note":"window opens 07:30","active":["morning","noon","evening","night"]}
+{"id":"d03","now":"07:40","events":[],"action":"ask","expect":{"kind":"due_now","slot":"morning"},"note":"window open, before time","active":["morning","noon","evening","night"]}
+{"id":"d04","now":"08:10","events":[],"action":"ask","expect":{"kind":"due_now","slot":"morning"},"note":"due","active":["morning","noon","evening","night"]}
+{"id":"d05","now":"08:29","events":[],"action":"ask","expect":{"kind":"due_now","slot":"morning"},"note":"last minute before family alert","active":["morning","noon","evening","night"]}
+{"id":"d06","now":"08:35","events":[],"action":"ask","expect":{"kind":"ask_family","slot":"morning"},"note":"late -> human","active":["morning","noon","evening","night"]}
+{"id":"d07","now":"08:10","events":[["morning","taken","08:05"]],"action":"ask","expect":{"kind":"taken","slot":"morning","time":"8:05","next":"noon"},"note":"just taken","active":["morning","noon","evening","night"]}
+{"id":"d08","now":"11:00","events":[["morning","taken","08:12"]],"action":"ask","expect":{"kind":"taken","slot":"morning","time":"8:12","next":"noon"},"note":"taken hours ago","active":["morning","noon","evening","night"]}
+{"id":"d09","now":"12:45","events":[["morning","taken","08:00"]],"action":"ask","expect":{"kind":"due_now","slot":"noon"},"note":"noon window open","active":["morning","noon","evening","night"]}
+{"id":"d10","now":"12:45","events":[],"action":"ask","expect":{"kind":"due_now","slot":"noon"},"note":"morning missed, answer is about now","active":["morning","noon","evening","night"]}
+{"id":"d11","now":"13:40","events":[["morning","taken","08:00"]],"action":"ask","expect":{"kind":"ask_family","slot":"noon"},"note":"noon late","active":["morning","noon","evening","night"]}
+{"id":"d12","now":"13:20","events":[["morning","taken","08:00"],["noon","taken","13:05"]],"action":"ask","expect":{"kind":"taken","slot":"noon","time":"1:05","next":"evening"},"note":"","active":["morning","noon","evening","night"]}
+{"id":"d13","now":"18:00","events":[["morning","taken","08:00"],["noon","taken","13:05"]],"action":"ask","expect":{"kind":"taken","slot":"noon","time":"1:05","next":"evening"},"note":"late afternoon still noon window","active":["morning","noon","evening","night"]}
+{"id":"d14","now":"19:10","events":[["morning","taken","08:00"],["noon","taken","13:00"]],"action":"ask","expect":{"kind":"due_now","slot":"evening"},"note":"","active":["morning","noon","evening","night"]}
+{"id":"d15","now":"20:05","events":[["morning","taken","08:00"],["noon","taken","13:00"]],"action":"ask","expect":{"kind":"ask_family","slot":"evening"},"note":"evening late","active":["morning","noon","evening","night"]}
+{"id":"d16","now":"20:30","events":[["evening","taken","19:40"]],"action":"ask","expect":{"kind":"taken","slot":"evening","time":"7:40","next":"night"},"note":"","active":["morning","noon","evening","night"]}
+{"id":"d17","now":"21:10","events":[["evening","taken","19:40"]],"action":"ask","expect":{"kind":"due_now","slot":"night"},"note":"","active":["morning","noon","evening","night"]}
+{"id":"d18","now":"21:45","events":[["night","taken","21:35"]],"action":"ask","expect":{"kind":"taken","slot":"night","time":"9:35","next":"tomorrow morning"},"note":"next is tomorrow","active":["morning","noon","evening","night"]}
+{"id":"d19","now":"22:05","events":[["evening","taken","19:40"]],"action":"ask","expect":{"kind":"ask_family","slot":"night"},"note":"night late","active":["morning","noon","evening","night"]}
+{"id":"d20","now":"23:30","events":[["night","taken","21:40"]],"action":"ask","expect":{"kind":"taken","slot":"night","time":"9:40","next":"tomorrow morning"},"note":"","active":["morning","noon","evening","night"]}
+{"id":"d21","now":"23:30","events":[],"action":"ask","expect":{"kind":"ask_family","slot":"night"},"note":"never taken today","active":["morning","noon","evening","night"]}
+{"id":"d22","now":"07:45","events":[["morning","unsure","07:40"]],"action":"ask","expect":{"kind":"ask_family","slot":"morning"},"note":"unsure log -> human","active":["morning","noon","evening","night"]}
+{"id":"d23","now":"13:00","active":["morning","night"],"events":[["morning","taken","08:05"]],"action":"ask","expect":{"kind":"taken","slot":"morning","time":"8:05","next":"night"},"note":"no noon medicine"}
+{"id":"d24","now":"13:00","active":["morning","night"],"events":[],"action":"ask","expect":{"kind":"ask_family","slot":"morning"},"note":"long morning window, late"}
+{"id":"d25","now":"15:00","active":["morning"],"events":[["morning","taken","08:20"]],"action":"ask","expect":{"kind":"taken","slot":"morning","time":"8:20","next":"tomorrow morning"},"note":"only one dose a day"}
+{"id":"d26","now":"10:00","active":["night"],"events":[],"action":"ask","expect":{"kind":"not_yet","next":"night"},"note":"only a night dose"}
+{"id":"d27","now":"08:10","events":[["morning","taken","08:05"]],"action":"took_it","expect":{"kind":"already_taken","slot":"morning","time":"8:05"},"note":"double dose stopped","active":["morning","noon","evening","night"]}
+{"id":"d28","now":"08:10","events":[],"action":"took_it","expect":{"kind":"log_taken","slot":"morning"},"note":"","active":["morning","noon","evening","night"]}
+{"id":"d29","now":"06:30","events":[],"action":"took_it","expect":{"kind":"nothing_open","next":"morning"},"note":"nothing due","active":["morning","noon","evening","night"]}
+{"id":"d30","now":"13:10","events":[["noon","taken","13:02"]],"action":"took_it","expect":{"kind":"already_taken","slot":"noon","time":"1:02"},"note":"","active":["morning","noon","evening","night"]}
+{"id":"d31","now":"21:50","events":[["night","taken","21:40"]],"action":"took_it","expect":{"kind":"already_taken","slot":"night","time":"9:40"},"note":"","active":["morning","noon","evening","night"]}
+{"id":"d32","now":"21:50","events":[],"action":"took_it","expect":{"kind":"log_taken","slot":"night"},"note":"","active":["morning","noon","evening","night"]}
+{"id":"d33","now":"12:20","events":[["morning","taken","08:00"]],"action":"took_it","expect":{"kind":"already_taken","slot":"morning","time":"8:00"},"note":"still the morning window","active":["morning","noon","evening","night"]}
+{"id":"d34","now":"12:40","events":[["morning","taken","08:00"]],"action":"took_it","expect":{"kind":"log_taken","slot":"noon"},"note":"noon window opened","active":["morning","noon","evening","night"]}
+{"id":"d35","now":"19:05","events":[["noon","taken","13:00"]],"action":"took_it","expect":{"kind":"log_taken","slot":"evening"},"note":"","active":["morning","noon","evening","night"]}
+{"id":"d36","now":"08:40","events":[],"action":"took_it","expect":{"kind":"log_taken","slot":"morning"},"note":"late is still allowed in the window","active":["morning","noon","evening","night"]}
+{"id":"d37","now":"10:00","events":[["morning","taken","08:05"],["morning","prevented_double","09:30"]],"action":"ask","expect":{"kind":"taken","slot":"morning","time":"8:05","next":"noon"},"note":"first time counts","active":["morning","noon","evening","night"]}
+{"id":"d38","now":"00:30","events":[["night","taken","21:40","yesterday"]],"action":"ask","expect":{"kind":"not_yet","next":"morning"},"note":"new day after midnight","active":["morning","noon","evening","night"]}
+{"id":"d39","now":"12:30","events":[["morning","taken","08:00"]],"action":"ask","expect":{"kind":"due_now","slot":"noon"},"note":"boundary: noon opens 12:30","active":["morning","noon","evening","night"]}
+{"id":"d40","now":"19:00","events":[["noon","taken","13:00"]],"action":"ask","expect":{"kind":"due_now","slot":"evening"},"note":"boundary: evening opens 19:00","active":["morning","noon","evening","night"]}

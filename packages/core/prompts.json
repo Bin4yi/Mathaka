@@ -11,21 +11,65 @@
           "items": {
             "type": "object",
             "properties": {
-              "name": { "type": "string" },
-              "strength": { "type": "string" },
-              "form": { "type": "string" },
-              "dose_count": { "type": "number" },
-              "frequency_raw": { "type": "string" },
-              "times": { "type": "array", "items": { "type": "string", "enum": ["morning", "noon", "evening", "night"] } },
-              "meal": { "type": "string", "enum": ["before", "after", "any"] },
-              "notes": { "type": "string" },
-              "confidence": { "type": "number" }
+              "name": {
+                "type": "string"
+              },
+              "strength": {
+                "type": "string"
+              },
+              "form": {
+                "type": "string"
+              },
+              "dose_count": {
+                "type": "number"
+              },
+              "frequency_raw": {
+                "type": "string"
+              },
+              "times": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "morning",
+                    "noon",
+                    "evening",
+                    "night"
+                  ]
+                }
+              },
+              "meal": {
+                "type": "string",
+                "enum": [
+                  "before",
+                  "after",
+                  "any"
+                ]
+              },
+              "notes": {
+                "type": "string"
+              },
+              "confidence": {
+                "type": "number"
+              }
             },
-            "required": ["name", "strength", "form", "dose_count", "frequency_raw", "times", "meal", "notes", "confidence"]
+            "required": [
+              "name",
+              "strength",
+              "form",
+              "dose_count",
+              "frequency_raw",
+              "times",
+              "meal",
+              "notes",
+              "confidence"
+            ]
           }
         }
       },
-      "required": ["rows"]
+      "required": [
+        "rows"
+      ]
     },
     "max_tokens": 900
   },
@@ -34,8 +78,18 @@
     "user": "This is a close-up of one pill. What letters or numbers are on it? If there are none, or you are not sure, return an empty text and a low confidence. Reply with JSON only.",
     "schema": {
       "type": "object",
-      "properties": { "text": { "type": "string" }, "confidence": { "type": "number" } },
-      "required": ["text", "confidence"]
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "text",
+        "confidence"
+      ]
     },
     "max_tokens": 40
   },
@@ -44,8 +98,14 @@
     "user": "Write ONE short sentence (at most 12 words) about how this pill looks. Measured look: {attributes}. Example: 'small pink round tablet with the number 5'. Reply with JSON only.",
     "schema": {
       "type": "object",
-      "properties": { "description": { "type": "string" } },
-      "required": ["description"]
+      "properties": {
+        "description": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "description"
+      ]
     },
     "max_tokens": 40
   },
@@ -54,8 +114,17 @@
     "user": "Write 4 to 6 short, simple sentences in {language} for the family of {name}, using only these facts from the medicine log:\n{facts}\nReply with JSON only.",
     "schema": {
       "type": "object",
-      "properties": { "sentences": { "type": "array", "items": { "type": "string" } } },
-      "required": ["sentences"]
+      "properties": {
+        "sentences": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "sentences"
+      ]
     },
     "max_tokens": 300
   },
@@ -64,9 +133,41 @@
     "user": "Situation: {state}\nQuestion: {question}\nOptions: {options}\nPick the one option label that fits best and say how sure you are (0 to 1). Reply with JSON only.",
     "schema": {
       "type": "object",
-      "properties": { "label": { "type": "string" }, "confidence": { "type": "number" } },
-      "required": ["label", "confidence"]
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "label",
+        "confidence"
+      ]
     },
     "max_tokens": 30
+  },
+  "decisions": {
+    "_note": "Decision layer wording, shared by Laya (phone + eval) and Gemma decide. Only these decisions exist.",
+    "intent": {
+      "state": "An older person said this to their medicine helper app: \"{text}\"",
+      "question": "What does the person want to know?",
+      "options": {
+        "did_i_take": "whether they already took their medicine",
+        "when_next": "when the next medicine is",
+        "which_pills": "which pills to take now",
+        "other": "something else, or not about medicine times"
+      }
+    },
+    "yesno": {
+      "state": "The app asked the older person: \"Did you take your medicine?\" They answered: \"{text}\"",
+      "question": "Did the person say they took the medicine?",
+      "options": {
+        "yes": "yes, they took or swallowed it",
+        "no": "no, not yet",
+        "unsure": "not sure, does not remember, unclear, or a question"
+      }
+    }
   }
 }

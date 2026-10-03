@@ -1,0 +1,16 @@
+{
+  "_note": "Synthetic pill set (frozen). known=true pills are calibrated; known=false must be rejected as new-looking. Includes look-alike pairs on purpose. Real photos go in eval/sets/pills/real/ (see README).",
+  "seedsCalib": [1, 2, 3],
+  "seedsTest": [11, 12, 13, 14],
+  "pills": [
+    { "id": "sugar", "known": true, "spec": { "shape": "oblong", "colorA": "white", "score": true, "sizeMm": { "length": 19, "width": 9 } } },
+    { "id": "pressure", "known": true, "spec": { "shape": "round", "colorA": "pink", "sizeMm": { "length": 7, "width": 7 } } },
+    { "id": "cholesterol", "known": true, "spec": { "shape": "oval", "colorA": "yellow", "sizeMm": { "length": 10, "width": 6 } } },
+    { "id": "heart", "known": true, "spec": { "shape": "capsule", "colorA": "red", "colorB": "white", "split": "vertical", "sizeMm": { "length": 18, "width": 6 } } },
+    { "id": "thyroid", "known": true, "spec": { "shape": "round", "colorA": "white", "score": true, "sizeMm": { "length": 6, "width": 6 } } },
+    { "id": "pain", "known": true, "spec": { "shape": "round", "colorA": "white", "sizeMm": { "length": 11, "width": 11 } } },
+    { "id": "new-blue-diamond", "known": false, "spec": { "shape": "diamond", "colorA": "blue", "sizeMm": { "length": 9, "width": 9 } } },
+    { "id": "new-green-capsule", "known": false, "spec": { "shape": "capsule", "colorA": "green", "colorB": "yellow", "split": "vertical", "sizeMm": { "length": 16, "width": 6 } } },
+    { "id": "new-brown-oval", "known": false, "spec": { "shape": "oval", "colorA": "brown", "sizeMm": { "length": 12, "width": 7 } } }
+  ]
+}

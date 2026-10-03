@@ -1,0 +1,48 @@
+{"id":"dev-i-01","task":"intent","lang_form":"si","text":"මම අද උදේ බෙහෙත් බිව්වද?","label":"did_i_take","writer":"claude-synthetic"}
+{"id":"dev-i-02","task":"intent","lang_form":"si","text":"ඊළඟ බෙහෙත කීයටද?","label":"when_next","writer":"claude-synthetic"}
+{"id":"dev-i-03","task":"intent","lang_form":"si","text":"දැන් බොන්න ඕන මොන පෙතිද?","label":"which_pills","writer":"claude-synthetic"}
+{"id":"dev-i-04","task":"intent","lang_form":"si","text":"අද වැස්ස එයිද?","label":"other","writer":"claude-synthetic"}
+{"id":"dev-i-05","task":"intent","lang_form":"si","text":"මගේ පෙති මම ගත්තද කියලා මතක නැහැ","label":"did_i_take","writer":"claude-synthetic"}
+{"id":"dev-i-06","task":"intent","lang_form":"si","text":"නිමල් කවදද එන්නේ?","label":"other","writer":"claude-synthetic"}
+{"id":"dev-i-07","task":"intent","lang_form":"singlish","text":"mama beheth biwwada?","label":"did_i_take","writer":"claude-synthetic"}
+{"id":"dev-i-08","task":"intent","lang_form":"singlish","text":"ilaga beheth kiyatada","label":"when_next","writer":"claude-synthetic"}
+{"id":"dev-i-09","task":"intent","lang_form":"singlish","text":"dan bonna one monawada","label":"which_pills","writer":"claude-synthetic"}
+{"id":"dev-i-10","task":"intent","lang_form":"singlish","text":"ada kawda gedara enne","label":"other","writer":"claude-synthetic"}
+{"id":"dev-i-11","task":"intent","lang_form":"singlish","text":"ude pethi gaththada mama","label":"did_i_take","writer":"claude-synthetic"}
+{"id":"dev-i-12","task":"intent","lang_form":"singlish","text":"rata beheth bonna kiyatada","label":"when_next","writer":"claude-synthetic"}
+{"id":"dev-i-13","task":"intent","lang_form":"en","text":"Did I take my tablets this morning?","label":"did_i_take","writer":"claude-synthetic"}
+{"id":"dev-i-14","task":"intent","lang_form":"en","text":"When is my next medicine?","label":"when_next","writer":"claude-synthetic"}
+{"id":"dev-i-15","task":"intent","lang_form":"en","text":"Which pills should I have now?","label":"which_pills","writer":"claude-synthetic"}
+{"id":"dev-i-16","task":"intent","lang_form":"en","text":"What is on TV tonight?","label":"other","writer":"claude-synthetic"}
+{"id":"dev-i-17","task":"intent","lang_form":"en","text":"I can't remember if I had my sugar tablet","label":"did_i_take","writer":"claude-synthetic"}
+{"id":"dev-i-18","task":"intent","lang_form":"en","text":"Is it time for the night pills yet?","label":"when_next","writer":"claude-synthetic"}
+{"id":"dev-i-19","task":"intent","lang_form":"mixed","text":"mama morning tablet eka biwwada?","label":"did_i_take","writer":"claude-synthetic"}
+{"id":"dev-i-20","task":"intent","lang_form":"mixed","text":"next medicine eka කීයටද?","label":"when_next","writer":"claude-synthetic"}
+{"id":"dev-i-21","task":"intent","lang_form":"mixed","text":"dan bonna one tablets monawada","label":"which_pills","writer":"claude-synthetic"}
+{"id":"dev-i-22","task":"intent","lang_form":"mixed","text":"ada match eka kiyatada?","label":"other","writer":"claude-synthetic"}
+{"id":"dev-i-23","task":"intent","lang_form":"mixed","text":"pressure pethi eka gaththada mama today","label":"did_i_take","writer":"claude-synthetic"}
+{"id":"dev-i-24","task":"intent","lang_form":"mixed","text":"lunch walata passe medicine thiyenawada?","label":"when_next","writer":"claude-synthetic"}
+{"id":"dev-y-01","task":"yesno","lang_form":"si","text":"ඔව්, බිව්වා","label":"yes","writer":"claude-synthetic"}
+{"id":"dev-y-02","task":"yesno","lang_form":"si","text":"නැහැ, තවම නැහැ","label":"no","writer":"claude-synthetic"}
+{"id":"dev-y-03","task":"yesno","lang_form":"si","text":"මතක නැහැ පුතේ","label":"unsure","writer":"claude-synthetic"}
+{"id":"dev-y-04","task":"yesno","lang_form":"si","text":"දැන් ටිකකට කලින් බිව්වා","label":"yes","writer":"claude-synthetic"}
+{"id":"dev-y-05","task":"yesno","lang_form":"si","text":"බොන්න ඕනද?","label":"unsure","writer":"claude-synthetic"}
+{"id":"dev-y-06","task":"yesno","lang_form":"si","text":"නෑ","label":"no","writer":"claude-synthetic"}
+{"id":"dev-y-07","task":"yesno","lang_form":"singlish","text":"ow biwwa","label":"yes","writer":"claude-synthetic"}
+{"id":"dev-y-08","task":"yesno","lang_form":"singlish","text":"naha thama","label":"no","writer":"claude-synthetic"}
+{"id":"dev-y-09","task":"yesno","lang_form":"singlish","text":"mathaka naha","label":"unsure","writer":"claude-synthetic"}
+{"id":"dev-y-10","task":"yesno","lang_form":"singlish","text":"ow ow gaththa","label":"yes","writer":"claude-synthetic"}
+{"id":"dev-y-11","task":"yesno","lang_form":"singlish","text":"nae","label":"no","writer":"claude-synthetic"}
+{"id":"dev-y-12","task":"yesno","lang_form":"singlish","text":"biwwada danne naha","label":"unsure","writer":"claude-synthetic"}
+{"id":"dev-y-13","task":"yesno","lang_form":"en","text":"Yes, I took them","label":"yes","writer":"claude-synthetic"}
+{"id":"dev-y-14","task":"yesno","lang_form":"en","text":"Not yet","label":"no","writer":"claude-synthetic"}
+{"id":"dev-y-15","task":"yesno","lang_form":"en","text":"I don't remember","label":"unsure","writer":"claude-synthetic"}
+{"id":"dev-y-16","task":"yesno","lang_form":"en","text":"I think so, maybe","label":"unsure","writer":"claude-synthetic"}
+{"id":"dev-y-17","task":"yesno","lang_form":"en","text":"No","label":"no","writer":"claude-synthetic"}
+{"id":"dev-y-18","task":"yesno","lang_form":"en","text":"Yes, just now with water","label":"yes","writer":"claude-synthetic"}
+{"id":"dev-y-19","task":"yesno","lang_form":"mixed","text":"ow, medicine eka biwwa","label":"yes","writer":"claude-synthetic"}
+{"id":"dev-y-20","task":"yesno","lang_form":"mixed","text":"naha, still not","label":"no","writer":"claude-synthetic"}
+{"id":"dev-y-21","task":"yesno","lang_form":"mixed","text":"mata remember naha","label":"unsure","writer":"claude-synthetic"}
+{"id":"dev-y-22","task":"yesno","lang_form":"mixed","text":"yes, ude biwwa","label":"yes","writer":"claude-synthetic"}
+{"id":"dev-y-23","task":"yesno","lang_form":"mixed","text":"no, passe bonnam","label":"no","writer":"claude-synthetic"}
+{"id":"dev-y-24","task":"yesno","lang_form":"mixed","text":"hmm, sure naha","label":"unsure","writer":"claude-synthetic"}

@@ -1,0 +1,122 @@
+{
+  "did_i_take": {
+    "n": 40,
+    "correct": 40,
+    "accuracy": 1.0,
+    "double_doses_prevented": 4,
+    "double_dose_cases": 4,
+    "unsafe_answers": [],
+    "failed": []
+  },
+  "pills": {
+    "photos": 36,
+    "attributes": {
+      "top1_accuracy": 1.0,
+      "unsure_to_human": 0,
+      "wrong_pill": 0,
+      "unknown_rejection_rate": 1.0
+    },
+    "baseline_colour_only": {
+      "top1_accuracy": 0.625,
+      "unknown_rejection_rate": 0.917
+    },
+    "median_ms_node": 1151,
+    "note": "synthetic photos (packages/core/src/vision/synth.ts); real photos: eval/sets/pills/real/"
+  },
+  "intents": {
+    "set": "dev",
+    "n": 48,
+    "engines": {
+      "rule (buttons only)": {
+        "all": {
+          "n": 48,
+          "accuracy": 0.271,
+          "accuracy_by_form": {
+            "en": 0.25,
+            "mixed": 0.25,
+            "si": 0.333,
+            "singlish": 0.25
+          },
+          "ece": 0.729,
+          "threshold": 0.85,
+          "escalation_rate": 1.0,
+          "wrong_action_rate": 0.0,
+          "wrong_actions": [],
+          "latency_ms_median": 0.0,
+          "latency_ms_p95": 0.0
+        },
+        "intent": {
+          "n": 24,
+          "accuracy": 0.208,
+          "accuracy_by_form": {
+            "en": 0.167,
+            "mixed": 0.167,
+            "si": 0.333,
+            "singlish": 0.167
+          },
+          "ece": 0.792,
+          "threshold": 0.85,
+          "escalation_rate": 1.0,
+          "wrong_action_rate": 0.0,
+          "wrong_actions": [],
+          "latency_ms_median": 0.0,
+          "latency_ms_p95": 0.0
+        },
+        "yesno": {
+          "n": 24,
+          "accuracy": 0.333,
+          "accuracy_by_form": {
+            "en": 0.333,
+            "mixed": 0.333,
+            "si": 0.333,
+            "singlish": 0.333
+          },
+          "ece": 0.667,
+          "threshold": 0.85,
+          "escalation_rate": 1.0,
+          "wrong_action_rate": 0.0,
+          "wrong_actions": [],
+          "latency_ms_median": 0.0,
+          "latency_ms_p95": 0.0
+        },
+        "sweep": [
+          {
+            "threshold": 0.5,
+            "escalation_rate": 1.0,
+            "wrong_action_rate": 0.0
+          },
+          {
+            "threshold": 0.6,
+            "escalation_rate": 1.0,
+            "wrong_action_rate": 0.0
+          },
+          {
+            "threshold": 0.7,
+            "escalation_rate": 1.0,
+            "wrong_action_rate": 0.0
+          },
+          {
+            "threshold": 0.8,
+            "escalation_rate": 1.0,
+            "wrong_action_rate": 0.0
+          },
+          {
+            "threshold": 0.85,
+            "escalation_rate": 1.0,
+            "wrong_action_rate": 0.0
+          },
+          {
+            "threshold": 0.9,
+            "escalation_rate": 1.0,
+            "wrong_action_rate": 0.0
+          },
+          {
+            "threshold": 0.95,
+            "escalation_rate": 1.0,
+            "wrong_action_rate": 0.0
+          }
+        ]
+      }
+    }
+  }
+}

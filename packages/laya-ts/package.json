@@ -1,0 +1,15 @@
+{
+  "name": "@mathaka/laya-ts",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Vendored laya-ts decision runtime (Apache-2.0, Convai Innovations) + Mathaka DecisionEngine glue. Re-vendor with tools/vendor-laya-ts.mjs.",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "license": "Apache-2.0",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@mathaka/core": "*"
+  }
+}
