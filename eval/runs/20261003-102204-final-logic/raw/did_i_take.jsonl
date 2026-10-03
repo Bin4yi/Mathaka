@@ -1,0 +1,40 @@
+{"id": "d01", "pred": {"kind": "not_yet", "next": "morning"}, "text": "Not yet. Your next medicine is at breakfast time, at about 8:00.", "ms": 1.768}
+{"id": "d02", "pred": {"kind": "not_yet", "next": "morning"}, "text": "Not yet. Your next medicine is at breakfast time, at about 8:00.", "ms": 0.183}
+{"id": "d03", "pred": {"kind": "due_now", "slot": "morning"}, "text": "It is time now. Your morning box is lit up.", "ms": 0.467}
+{"id": "d04", "pred": {"kind": "due_now", "slot": "morning"}, "text": "It is time now. Your morning box is lit up.", "ms": 0.091}
+{"id": "d05", "pred": {"kind": "due_now", "slot": "morning"}, "text": "It is time now. Your morning box is lit up.", "ms": 0.114}
+{"id": "d06", "pred": {"kind": "ask_family", "slot": "morning"}, "text": "Please wait. I will ask Nimal.", "ms": 0.128}
+{"id": "d07", "pred": {"kind": "taken", "slot": "morning", "time": "8:05", "next": "noon"}, "text": "Yes, Ammi. You took your morning medicine at 8:05. The next one is at lunch time.", "ms": 0.324}
+{"id": "d08", "pred": {"kind": "taken", "slot": "morning", "time": "8:12", "next": "noon"}, "text": "Yes, Ammi. You took your morning medicine at 8:12. The next one is at lunch time.", "ms": 0.128}
+{"id": "d09", "pred": {"kind": "due_now", "slot": "noon"}, "text": "It is time now. Your noon box is lit up.", "ms": 0.099}
+{"id": "d10", "pred": {"kind": "due_now", "slot": "noon"}, "text": "It is time now. Your noon box is lit up.", "ms": 0.079}
+{"id": "d11", "pred": {"kind": "ask_family", "slot": "noon"}, "text": "Please wait. I will ask Nimal.", "ms": 0.081}
+{"id": "d12", "pred": {"kind": "taken", "slot": "noon", "time": "1:05", "next": "evening"}, "text": "Yes, Ammi. You took your noon medicine at 1:05. The next one is at dinner time.", "ms": 0.123}
+{"id": "d13", "pred": {"kind": "taken", "slot": "noon", "time": "1:05", "next": "evening"}, "text": "Yes, Ammi. You took your noon medicine at 1:05. The next one is at dinner time.", "ms": 0.08}
+{"id": "d14", "pred": {"kind": "due_now", "slot": "evening"}, "text": "It is time now. Your evening box is lit up.", "ms": 0.098}
+{"id": "d15", "pred": {"kind": "ask_family", "slot": "evening"}, "text": "Please wait. I will ask Nimal.", "ms": 0.044}
+{"id": "d16", "pred": {"kind": "taken", "slot": "evening", "time": "7:40", "next": "night"}, "text": "Yes, Ammi. You took your evening medicine at 7:40. The next one is at bedtime.", "ms": 0.071}
+{"id": "d17", "pred": {"kind": "due_now", "slot": "night"}, "text": "It is time now. Your night box is lit up.", "ms": 0.031}
+{"id": "d18", "pred": {"kind": "taken", "slot": "night", "time": "9:35", "next": "tomorrow morning"}, "text": "Yes, Ammi. You took your night medicine at 9:35. The next one is tomorrow at breakfast time.", "ms": 0.041}
+{"id": "d19", "pred": {"kind": "ask_family", "slot": "night"}, "text": "Please wait. I will ask Nimal.", "ms": 0.026}
+{"id": "d20", "pred": {"kind": "taken", "slot": "night", "time": "9:40", "next": "tomorrow morning"}, "text": "Yes, Ammi. You took your night medicine at 9:40. The next one is tomorrow at breakfast time.", "ms": 0.047}
+{"id": "d21", "pred": {"kind": "ask_family", "slot": "night"}, "text": "Please wait. I will ask Nimal.", "ms": 0.023}
+{"id": "d22", "pred": {"kind": "ask_family", "slot": "morning"}, "text": "Please wait. I will ask Nimal.", "ms": 0.025}
+{"id": "d23", "pred": {"kind": "taken", "slot": "morning", "time": "8:05", "next": "night"}, "text": "Yes, Ammi. You took your morning medicine at 8:05. The next one is at bedtime.", "ms": 0.124}
+{"id": "d24", "pred": {"kind": "ask_family", "slot": "morning"}, "text": "Please wait. I will ask Nimal.", "ms": 0.042}
+{"id": "d25", "pred": {"kind": "taken", "slot": "morning", "time": "8:20", "next": "tomorrow morning"}, "text": "Yes, Ammi. You took your morning medicine at 8:20. The next one is tomorrow at breakfast time.", "ms": 0.059}
+{"id": "d26", "pred": {"kind": "not_yet", "next": "night"}, "text": "Not yet. Your next medicine is at bedtime, at about 9:30.", "ms": 0.056}
+{"id": "d27", "pred": {"kind": "already_taken", "slot": "morning", "time": "8:05"}, "text": "You already took your morning medicine at 8:05. The next one is at lunch time.", "ms": 0.246}
+{"id": "d28", "pred": {"kind": "log_taken", "slot": "morning"}, "text": "Thank you, Ammi. I wrote it down.", "ms": 0.032}
+{"id": "d29", "pred": {"kind": "nothing_open", "next": "morning"}, "text": "There is no medicine now. The next one is at breakfast time.", "ms": 0.045}
+{"id": "d30", "pred": {"kind": "already_taken", "slot": "noon", "time": "1:02"}, "text": "You already took your noon medicine at 1:02. The next one is at dinner time.", "ms": 0.33}
+{"id": "d31", "pred": {"kind": "already_taken", "slot": "night", "time": "9:40"}, "text": "You already took your night medicine at 9:40. The next one is tomorrow at breakfast time.", "ms": 0.066}
+{"id": "d32", "pred": {"kind": "log_taken", "slot": "night"}, "text": "Thank you, Ammi. I wrote it down.", "ms": 0.029}
+{"id": "d33", "pred": {"kind": "already_taken", "slot": "morning", "time": "8:00"}, "text": "You already took your morning medicine at 8:00. The next one is at lunch time.", "ms": 0.045}
+{"id": "d34", "pred": {"kind": "log_taken", "slot": "noon"}, "text": "Thank you, Ammi. I wrote it down.", "ms": 0.017}
+{"id": "d35", "pred": {"kind": "log_taken", "slot": "evening"}, "text": "Thank you, Ammi. I wrote it down.", "ms": 0.019}
+{"id": "d36", "pred": {"kind": "log_taken", "slot": "morning"}, "text": "Thank you, Ammi. I wrote it down.", "ms": 0.018}
+{"id": "d37", "pred": {"kind": "taken", "slot": "morning", "time": "8:05", "next": "noon"}, "text": "Yes, Ammi. You took your morning medicine at 8:05. The next one is at lunch time.", "ms": 0.052}
+{"id": "d38", "pred": {"kind": "not_yet", "next": "morning"}, "text": "Not yet. Your next medicine is at breakfast time, at about 8:00.", "ms": 0.041}
+{"id": "d39", "pred": {"kind": "due_now", "slot": "noon"}, "text": "It is time now. Your noon box is lit up.", "ms": 0.029}
+{"id": "d40", "pred": {"kind": "due_now", "slot": "evening"}, "text": "It is time now. Your evening box is lit up.", "ms": 0.028}

@@ -1,0 +1,16 @@
+{
+  "args": {
+    "name": "final-logic",
+    "suites": "did_i_take,pills",
+    "engines": "rule",
+    "intents_set": "dev",
+    "threshold": 0.85
+  },
+  "frozen": {
+    "did_i_take/cases.jsonl": "f72f90859faf50a15d5e855fca8f059081fd2e7572d16360e0bff0a47d5868eb",
+    "pills/specs.json": "f2a674e7927df29a87ecaf5a158abe8569726bb86ad5db01e9ce29d16bda4407"
+  },
+  "python": "3.14.5",
+  "machine": "Windows-11-10.0.26200-SP0",
+  "cpu": "Intel64 Family 6 Model 140 Stepping 2, GenuineIntel"
+}

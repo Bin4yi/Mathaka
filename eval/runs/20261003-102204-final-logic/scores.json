@@ -1,0 +1,26 @@
+{
+  "did_i_take": {
+    "n": 40,
+    "correct": 40,
+    "accuracy": 1.0,
+    "double_doses_prevented": 4,
+    "double_dose_cases": 4,
+    "unsafe_answers": [],
+    "failed": []
+  },
+  "pills": {
+    "photos": 36,
+    "attributes": {
+      "top1_accuracy": 1.0,
+      "unsure_to_human": 0,
+      "wrong_pill": 0,
+      "unknown_rejection_rate": 1.0
+    },
+    "baseline_colour_only": {
+      "top1_accuracy": 0.625,
+      "unknown_rejection_rate": 0.917
+    },
+    "median_ms_node": 741,
+    "note": "synthetic photos (packages/core/src/vision/synth.ts); real photos: eval/sets/pills/real/"
+  }
+}

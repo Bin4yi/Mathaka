@@ -23,7 +23,7 @@ The model is released from memory after 90 s idle.
 |---|---|---|---|
 | Pill features: pure TypeScript pipeline (`packages/core/src/vision`) | 0 MB | Apache-2.0 (ours) | markers, size, colour, shape, score line |
 | Marker detector: js-aruco2 2.0.0, vendored | tiny | MIT | finding the calibration mat |
-| Laya (decision model), INT8 ONNX | M7 | Apache-2.0 | intent of a spoken question, yes/no/unsure answers; only after the gate test |
+| Laya (decision model): `convaiinnovations/laya` (English, 421M, 0.84 GB) and `laya/multilingual` (322M, 0.64 GB), pinned revision 55cf4c4 | runtime: official laya-ts (vendored) + onnxruntime | Apache-2.0 | intent of a spoken question, yes/no/unsure answers. **Gate result: not default yet** (see eval/report.md); elder phone uses buttons only |
 
 ## What the AI is NOT allowed to do
 
