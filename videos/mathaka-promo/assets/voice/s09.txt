@@ -1,0 +1,1 @@
+Once, during setup, the family phone runs Gemma 3, an open vision model, right on the phone, with llama dot R N. It reads the prescription into rows, and reads the number printed on each pill. Every answer is forced into a JSON schema, checked, and retried once. And a person confirms every row, before it is used.

@@ -1,0 +1,1 @@
+And there is an optional Arduino pill box. An E S P thirty two lights the slot that is due, and blinks gently when it is late. Pressing the lit slot means, I took it, through the same double dose guard. The box never decides. You can even try it in the Wokwi simulator.

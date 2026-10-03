@@ -1,0 +1,1 @@
+Some things need understanding, like what Ammi meant, in Singlish. For that, we tested Laya, an open decision model that can only pick from a short list. It cannot write a sentence. And no model ever writes words for Ammi. Every sentence she hears is a fixed template, filled with facts from her own log.

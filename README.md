@@ -8,6 +8,54 @@
 
 **Status:** prototype for the DEV Hacktoberfest "Build for a Friend" challenge. **Not a medical device.** See [Honest limits](#honest-limits).
 
+## Demo video (4.5 min)
+
+[![Mathaka demo video](docs/media/poster.jpg)](docs/media/mathaka-demo.mp4)
+
+▶ **[Watch the demo (MP4)](docs/media/mathaka-demo.mp4)**. It covers the elder flow, the family phone, the on-device AI, pill vision, the Arduino box and the evaluation.
+The video is made from HTML with [HyperFrames](https://hyperframes.heygen.com). Its source is in [`videos/mathaka-promo`](videos/mathaka-promo).
+
+## Screenshots
+
+Real screens from the web build (`npm run web`, demo mode).
+
+**Elder phone**: one step at a time, the same calm words every time.
+
+| Home (8:00) | This slot's pills | "Did you swallow them?" | "Did I take it?" |
+|---|---|---|---|
+| ![Elder home](docs/screenshots/en-home.png) | ![Dose screen](docs/screenshots/en-dose.png) | ![Confirm](docs/screenshots/en-confirm.png) | ![Answer](docs/screenshots/en-ask-after.png) |
+
+**Sinhala, Tamil and high contrast**
+
+| සිංහල | தமிழ் | High contrast |
+|---|---|---|
+| ![Sinhala](docs/screenshots/si-home.png) | ![Tamil](docs/screenshots/ta-home.png) | ![High contrast](docs/screenshots/hc-home.png) |
+
+**Family / Memory Buddy phone**
+
+| Dashboard | Week + stock | Calibration | Pill photo check |
+|---|---|---|---|
+| ![Dashboard](docs/screenshots/fam-1.png) | ![Week](docs/screenshots/fam-3.png) | ![Calibration](docs/screenshots/buddy-home.png) | ![Pill check](docs/screenshots/buddy-pill-b.png) |
+
+| Second-person check | Box filling plan | Family voice |
+|---|---|---|
+| ![Approve](docs/screenshots/buddy-approve.png) | ![Box plan](docs/screenshots/buddy-box.png) | ![Voice](docs/screenshots/fam-voice.png) |
+
+**Pill vision in plain TypeScript.** These are real outputs of `packages/core/src/vision`. It found the 4 markers, flattened the perspective, white-balanced on the grey patch and cut out the pill. Result: oblong, white, score line, **19.2 × 9.2 mm**, in about 200 ms.
+
+| Photo on the mat | Seen from above (4 px/mm) | Pill segmented |
+|---|---|---|
+| ![Photo](docs/screenshots/vision-sugar-photo.png) | ![Warped](docs/screenshots/vision-sugar-warp.png) | ![Segmented](docs/screenshots/vision-sugar-view.png) |
+
+**From the video**
+
+| | |
+|---|---|
+| ![Heavy AI once, light AI every day](docs/media/scene-breakthrough.jpg) | ![Gemma on the family phone](docs/media/scene-gemma.jpg) |
+| ![Pill vision](docs/media/scene-vision.jpg) | ![One file, checked twice](docs/media/scene-file.jpg) |
+| ![The AI that is not allowed to speak](docs/media/scene-laya.jpg) | ![Arduino pill box](docs/media/scene-arduino.jpg) |
+| ![Results](docs/media/scene-proof.jpg) | |
+
 ## What it does
 
 | For the elder (old, cheap phone) | For the family / Memory Buddy (any phone) |
@@ -32,7 +80,8 @@
 | `helper/` | Optional laptop helper: FastAPI + Ollama (Gemma) + Laya, same JSON contracts. |
 | `eval/` | Frozen test sets, `python -m eval.run`, results in `eval/runs/`, `eval/report.md`. |
 | `tools/` | Asset generator, calibration mat (PDF/PNG), low chime, screenshots, laya-ts vendoring. |
-| `docs/` | Architecture, models, EAS build, accessibility checklist, demo script, post draft. |
+| `docs/` | Architecture, models, EAS build, accessibility checklist, post draft, screenshots and demo video. |
+| `videos/mathaka-promo/` | The demo video source (HyperFrames HTML scenes, voice, music, real app captures). |
 
 ## Quick start (Windows or macOS)
 
@@ -71,6 +120,20 @@ eval\.venv\Scripts\python -m eval.run --name mine     # then: python -m eval.rep
 - Gemma vision needs a stronger phone; weak phones use the laptop helper for calibration.
 - Pill-vision numbers are on synthetic photos so far; real photos are being collected.
 - It does not replace a carer. It gives the carer one less worry.
+
+## Video credits
+
+- Voice: Kokoro-82M (`af_heart`, runs offline). Music: MusicGen small (offline). Both run on the laptop.
+- Photos from Wikimedia Commons:
+  - "Pills" by Ayena (public domain)
+  - "Pill Organizer With Vitamins And Medicines" by Stevepb (CC0)
+  - "Three generations" by trokilinochchi (CC BY 2.0)
+  - "ESP32 Dev Board" by Edwiyanto (CC BY-SA 4.0)
+  - The full list with links is in [`videos/mathaka-promo/assets/photos/credits.json`](videos/mathaka-promo/assets/photos/credits.json).
+- Rebuild the video:
+  1. `cd videos/mathaka-promo`
+  2. `node scripts/build.mjs`
+  3. `npx hyperframes render`
 
 ## Licence
 

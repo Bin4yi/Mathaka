@@ -1,0 +1,63 @@
+{
+  "sugar": {
+    "markers": 4,
+    "reprojErrorPx": 1.5939481201993217,
+    "features": {
+      "shape": "oblong",
+      "colorA": "white",
+      "split": "none",
+      "score": true,
+      "sizeMm": {
+        "length": 19.2,
+        "width": 9.2
+      },
+      "areaMm2": 160.4,
+      "measures": {
+        "aspect": 2.085924439986626,
+        "circularity": 0.8004217843001991,
+        "extent": 0.9113973324579175,
+        "vertices": 8
+      },
+      "markersFound": 4,
+      "confidence": 1,
+      "warnings": []
+    },
+    "timingsMs": {
+      "markers": 102.63990000000013,
+      "warp": 12.17599999999993,
+      "segment": 53.37740000000031,
+      "features": 29.587400000000343
+    }
+  },
+  "capsule": {
+    "markers": 4,
+    "reprojErrorPx": 1.5939481201993217,
+    "features": {
+      "shape": "capsule",
+      "colorA": "red",
+      "colorB": "white",
+      "split": "vertical",
+      "score": false,
+      "sizeMm": {
+        "length": 18.1,
+        "width": 6.2
+      },
+      "areaMm2": 100.1,
+      "measures": {
+        "aspect": 2.9308700834326573,
+        "circularity": 0.6822600497019494,
+        "extent": 0.897635161826784,
+        "vertices": 8
+      },
+      "markersFound": 4,
+      "confidence": 1,
+      "warnings": []
+    },
+    "timingsMs": {
+      "markers": 107.17500000000018,
+      "warp": 17.051699999999983,
+      "segment": 65.20340000000033,
+      "features": 18.97069999999985
+    }
+  }
+}

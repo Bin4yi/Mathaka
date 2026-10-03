@@ -1,0 +1,1 @@
+When a dose is missed, the family knows. First over the home Wi-Fi, paired once with a QR code. If that fails, by plain SMS, with no internet at all. Anything not delivered is tried again, in the background.
