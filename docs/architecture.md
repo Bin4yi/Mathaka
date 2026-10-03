@@ -29,13 +29,13 @@ flowchart LR
 
 ## Decision layer: the AI that is not allowed to speak
 
-- Every elder sentence is a fixed template () filled with data from the local log; a unit test forbids words like "take another", "wrong", "missed" and doses.
+- Every elder sentence is a fixed template (`packages/core/src/templates.ts`) filled with data from the local log; a unit test forbids words like "take another", "wrong", "missed" and doses.
 - Decisions only pick from short option lists (< 20): question intent, yes/no/unsure, frequency -> slots. Low confidence -> "Please wait. I will ask Nimal." + family alert.
-- Engines:  (buttons only, elder default), Gemma (family phone), Laya (open, non-generative; vendored laya-ts runtime). Laya becomes the default only if it beats Gemma on Sinhala/Singlish **and** has a lower wrong-action rate. Zero-shot it does not (eval/report.md), so it waits for the Sinhala fine-tune.
+- Engines: `RuleEngine` (buttons only, elder default), Gemma (family phone), Laya (open, non-generative; vendored laya-ts runtime). Laya becomes the default only if it beats Gemma on Sinhala/Singlish **and** has a lower wrong-action rate. Zero-shot it does not (eval/report.md), so it waits for the Sinhala fine-tune.
 
 ## Optional Arduino pill box
 
-ESP32 + 4 LEDs + 4 buttons or lid reed switches (). The phone sends  /  (max 1 Hz) /  over BLE; the box sends  / . The box never decides: a press on the current slot goes through the same double-dose guard as the screen; another slot only raises a quiet family alert. Same protocol over USB serial, so it runs in the Wokwi simulator.
+ESP32 + 4 LEDs + 4 buttons or lid reed switches (`firmware/esp32`). The phone sends `LIGHT n` / `BLINK n` (max 1 Hz) / `ALL_OFF` over BLE; the box sends `PRESS n` / `LID n OPEN`. The box never decides: a press on the current slot goes through the same double-dose guard as the screen; another slot only raises a quiet family alert. Same protocol over USB serial, so it runs in the Wokwi simulator.
 
 ## Calibration: one file, checked twice
 
