@@ -78,6 +78,7 @@ export default function FamilyHome() {
     if (a.kind === 'unsure_answer') return t(lang, 'family.alert.unsure_answer', { name: elderName, slot });
     if (a.kind === 'unsure_check') return t(lang, 'family.alert.unsure_check', { name: elderName, slot });
     if (a.kind === 'new_pill') return t(lang, 'family.alert.new_pill', { name: elderName });
+    if (a.kind === 'clinic_soon') return t(lang, 'family.alert.clinic_soon', { date: String(a.data?.date ?? a.date) });
     if (a.kind === 'low_stock') {
       const m = medicineById.get(String(a.data?.medicineId ?? ''));
       return t(lang, 'family.alert.low_stock', { medicine: m ? purpose(m, lang) : '', remaining: a.data?.remaining ?? '' });
@@ -130,6 +131,7 @@ export default function FamilyHome() {
         <ActionTile lang={lang} label={t(lang, 'family.sync')} icon={Assets.icons.family} onPress={() => router.push('/family/sync')} />
         <ActionTile lang={lang} label={t(lang, 'family.aiButton')} icon={Assets.icons.checkPhoto} onPress={() => router.push('/family/ai')} />
         <ActionTile lang={lang} label={t(lang, 'family.voice')} icon={Assets.icons.speaker} onPress={() => router.push('/family/voice')} />
+        <ActionTile lang={lang} label={t(lang, 'family.more')} icon={Assets.icons.calendarClinic} onPress={() => router.push('/family/more')} />
         <ActionTile lang={lang} label={t(lang, 'family.settings')} icon={Assets.icons.lock} onPress={() => router.push('/family/settings')} />
         <ActionTile lang={lang} label={t(lang, 'buddy.step.box')} icon={Assets.illustrations.pillboxClosed} onPress={() => router.push('/buddy/box')} />
       </View>

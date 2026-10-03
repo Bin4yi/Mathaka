@@ -15,3 +15,4 @@ export * from './calibrationFile';
 export * from './link';
 export * from './match';
 export * from './box';
+export * from './pillSvg';

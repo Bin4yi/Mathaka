@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { AppState } from 'react-native';
+import { calmActiveAt } from '../services/calm';
 import { checkMissed, loadElderView, syncBoxLights } from '../services/doseService';
 import { useAppStore } from '../store/appStore';
 import { useLoad } from './useLoad';
@@ -23,9 +24,13 @@ export function useElderView() {
     };
   }, [reload]);
 
-  // the Bluetooth box (if paired) shows the same slot as the screen
+  // the Bluetooth box (if paired) shows the same slot as the screen; calm mode by the clock
   useEffect(() => {
-    if (data) void syncBoxLights(data);
+    if (!data) return;
+    void syncBoxLights(data);
+    void calmActiveAt(data.now).then((calm) => {
+      if (useAppStore.getState().calmActive !== calm) useAppStore.setState({ calmActive: calm });
+    });
   }, [data]);
 
   return { view: data, reload };

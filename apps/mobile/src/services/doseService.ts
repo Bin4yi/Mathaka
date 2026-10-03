@@ -130,11 +130,22 @@ export async function confirmTaken(source: DoseEvent['source'] = 'button'): Prom
   }
 
   await repo.saveDoseEvent({ id: newId('de'), date: d.date, slot: d.slot, status: 'taken', source, at: now.toISOString() });
-  // pill counts (refill alerts come in M9)
+  // pill counts; fewer than 7 days left -> one refill alert per medicine per month
   const meds = await repo.listMedicines();
   for (const p of view.bySlot[d.slot]) {
     const m = meds.find((x) => x.id === p.medicine.id);
-    if (m) await repo.saveMedicine({ ...m, remainingCount: Math.max(0, m.remainingCount - p.item.count) });
+    if (!m) continue;
+    const remaining = Math.max(0, m.remainingCount - p.item.count);
+    await repo.saveMedicine({ ...m, remainingCount: remaining });
+    const perDay = Object.values(view.bySlot).flat().filter((x) => x.medicine.id === m.id).reduce((n, x) => n + x.item.count, 0);
+    if (m.receivedCount > 0 && perDay > 0 && remaining / perDay < 7) {
+      const id = `al-low_stock-${m.id}-${d.date.slice(0, 7)}`;
+      if (!(await repo.listAlerts()).some((a) => a.id === id)) {
+        const alert = { id, kind: 'low_stock' as const, date: d.date, createdAt: now.toISOString(), readAt: null, data: { medicineId: m.id, remaining } };
+        await repo.saveAlert(alert);
+        void deliverAlert(alert);
+      }
+    }
   }
   await repo.addAudit({ id: newId('au'), at: now.toISOString(), actor: 'elder', action: 'dose_taken', details: `${d.slot} via ${source}` });
   await afterChange(repo);

@@ -17,6 +17,8 @@ type AppState = {
   elderMessage: ElderMessage | null;
   /** bumps when dose data changes, so screens reload */
   dataVersion: number;
+  /** evening calm mode is on right now (softer colours, slower speech on elder screens) */
+  calmActive: boolean;
   setRole: (role: DeviceRole | null) => void;
   setUiLang: (lang: Lang) => void;
   setThemeChoice: (c: ThemeChoice) => void;
@@ -32,6 +34,7 @@ export const useAppStore = create<AppState>((set) => ({
   demoOffsetMs: 0,
   elderMessage: null,
   dataVersion: 0,
+  calmActive: false,
   setRole: (role) => set({ role }),
   setUiLang: (uiLang) => set({ uiLang }),
   setThemeChoice: (themeChoice) => set({ themeChoice }),

@@ -1,6 +1,7 @@
 import { aiSi } from './ai.si';
 import { buddySi } from './buddy.si';
 import type { StringKey } from './en';
+import { moreSi } from './more.si';
 import { uiSi } from './ui.si';
 import { syncSi } from './sync.si';
 
@@ -134,4 +135,5 @@ export const si: Record<StringKey, string> = {
   ...aiSi,
   ...syncSi,
   ...uiSi,
+  ...moreSi,
 };

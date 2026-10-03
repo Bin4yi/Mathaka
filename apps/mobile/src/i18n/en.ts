@@ -1,6 +1,7 @@
 import { aiEn } from './ai.en';
 import { buddyEn } from './buddy.en';
 import { syncEn } from './sync.en';
+import { moreEn } from './more.en';
 import { uiEn } from './ui.en';
 
 // English strings. Keys are shared by si.ts and ta.ts (TypeScript checks they all exist).
@@ -134,6 +135,7 @@ export const en = {
   ...aiEn,
   ...syncEn,
   ...uiEn,
+  ...moreEn,
 } as const;
 
 export type StringKey = keyof typeof en;

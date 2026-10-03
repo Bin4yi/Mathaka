@@ -27,7 +27,8 @@ type Props = {
  */
 export function MessageCard({ lang, text, autoSpeak, picture }: Props) {
   const theme = useTheme();
-  const rate = useAppStore((s) => s.speechRate);
+  // evening calm mode speaks a little slower
+  const rate = useAppStore((s) => (s.calmActive ? s.speechRate * 0.85 : s.speechRate));
   const sayAgain = useTapGuard(() => speak(text, lang, rate));
 
   useEffect(() => {

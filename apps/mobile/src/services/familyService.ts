@@ -24,6 +24,15 @@ export async function loadFamilyView(): Promise<FamilyView | null> {
   const elderView = await loadElderView(repo);
   if (!elderView) return null;
   const now = clock.now();
+  // clinic visit in the next 3 days -> one reminder
+  const clinic = await repo.getSetting<string>('clinicDate');
+  if (clinic && /^d{4}-d{2}-d{2}$/.test(clinic)) {
+    const days = Math.round((new Date(`${clinic}T00:00:00`).getTime() - new Date(`${dateKey(now)}T00:00:00`).getTime()) / 86_400_000);
+    const id = `al-clinic_soon-${clinic}`;
+    if (days >= 0 && days <= 3 && !(await repo.listAlerts()).some((a) => a.id === id)) {
+      await repo.saveAlert({ id, kind: 'clinic_soon', date: dateKey(now), createdAt: now.toISOString(), readAt: null, data: { date: clinic } });
+    }
+  }
   const from = dateKey(addDays(now, -6));
   const events = await repo.listDoseEvents(from, dateKey(now));
   const [alerts, medicines, profiles, questions] = await Promise.all([
