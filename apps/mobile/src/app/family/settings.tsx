@@ -2,6 +2,7 @@ import { LANGS, type Lang } from '@mathaka/core';
 import { router } from 'expo-router';
 import { useState } from 'react';
 import { StyleSheet, TextInput, View } from 'react-native';
+import { Assets } from '../../../assets/generated';
 import { SIZE, type ThemeChoice } from '../../a11y/tokens';
 import { useTheme } from '../../a11y/useTheme';
 import { AppText } from '../../components/AppText';
@@ -18,6 +19,7 @@ import {
   scheduledCount,
 } from '../../services/notifications';
 import { saveRole, savePin, saveSpeechRate, saveThemeChoice, saveUiLang } from '../../services/settings';
+import { boxConnected, boxSupported, findAndConnectBox, forgetBox } from '../../services/boxService';
 import { hasVoice } from '../../services/speech';
 import { useAppStore } from '../../store/appStore';
 
@@ -31,6 +33,7 @@ export default function SettingsScreen() {
   const theme = useTheme();
   const [pin, setPin] = useState('');
   const [pinMsg, setPinMsg] = useState('');
+  const [boxMsg, setBoxMsg] = useState('');
 
   const { data, reload } = useLoad(async () => {
     const repo = await getRepository();
@@ -153,6 +156,33 @@ export default function SettingsScreen() {
           />
         </View>
         {!!pinMsg && <AppText lang={lang} size={16} accessibilityLiveRegion="polite">{pinMsg}</AppText>}
+      </Section>
+
+      <Section title={t(lang, 'box.section')} lang={lang} icon={Assets.illustrations.pillboxClosed}>
+        <AppText lang={lang} size={15} color={theme.textMuted}>{t(lang, 'box.hint')}</AppText>
+        {!boxSupported() ? (
+          <AppText lang={lang} size={16}>{t(lang, 'box.unsupported')}</AppText>
+        ) : (
+          <>
+            <AppText lang={lang} size={16} bold accessibilityLiveRegion="polite">
+              {boxMsg || t(lang, boxConnected() ? 'box.connected' : 'box.notConnected')}
+            </AppText>
+            {boxConnected() ? (
+              <FamilyButton lang={lang} label={t(lang, 'box.forget')} onPress={forgetBox} />
+            ) : (
+              <FamilyButton
+                lang={lang}
+                primary
+                label={t(lang, 'box.find')}
+                onPress={async () => {
+                  setBoxMsg(t(lang, 'box.searching'));
+                  const r = await findAndConnectBox();
+                  setBoxMsg(t(lang, r === 'connected' ? 'box.connected' : r === 'no_permission' ? 'box.noPermission' : r === 'unsupported' ? 'box.unsupported' : 'box.notFound'));
+                }}
+              />
+            )}
+          </>
+        )}
       </Section>
 
       <FamilyButton

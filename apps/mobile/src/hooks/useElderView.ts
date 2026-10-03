@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { AppState } from 'react-native';
-import { checkMissed, loadElderView } from '../services/doseService';
+import { checkMissed, loadElderView, syncBoxLights } from '../services/doseService';
 import { useAppStore } from '../store/appStore';
 import { useLoad } from './useLoad';
 
@@ -22,6 +22,11 @@ export function useElderView() {
       sub.remove();
     };
   }, [reload]);
+
+  // the Bluetooth box (if paired) shows the same slot as the screen
+  useEffect(() => {
+    if (data) void syncBoxLights(data);
+  }, [data]);
 
   return { view: data, reload };
 }

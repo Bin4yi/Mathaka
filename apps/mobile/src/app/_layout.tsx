@@ -8,7 +8,8 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { FONT_FILES } from '../a11y/fonts';
 import { useTheme } from '../a11y/useTheme';
 import { registerElderBackgroundCheck } from '../services/backgroundTask';
-import { checkMissed, loadElderView } from '../services/doseService';
+import { onBoxEvent, reconnectBox } from '../services/boxService';
+import { checkMissed, handleBoxEvent, loadElderView } from '../services/doseService';
 import { deliverPending, startFamilyListener } from '../services/linkService';
 import { onReminderTap, rescheduleReminders, setupNotifications } from '../services/notifications';
 import { loadAppSettings } from '../services/settings';
@@ -38,6 +39,16 @@ export default function RootLayout() {
       const view = await loadElderView();
       if (view) await rescheduleReminders(view);
       await registerElderBackgroundCheck();
+      // optional Bluetooth pill box: its presses behave like the big buttons
+      onBoxEvent((e) => {
+        void handleBoxEvent(e).then((msg) => {
+          if (msg) {
+            useAppStore.getState().setElderMessage(msg);
+            router.push('/elder/answer');
+          }
+        });
+      });
+      await reconnectBox();
       await deliverPending();
     })();
     return onReminderTap(() => router.push('/elder/dose'));

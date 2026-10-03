@@ -76,6 +76,8 @@ export default function FamilyHome() {
     const slot = a.slot ? slotWord(a.slot) : '';
     if (a.kind === 'missed') return t(lang, 'family.alert.missed', { name: elderName, slot, date: a.date });
     if (a.kind === 'unsure_answer') return t(lang, 'family.alert.unsure_answer', { name: elderName, slot });
+    if (a.kind === 'unsure_check') return t(lang, 'family.alert.unsure_check', { name: elderName, slot });
+    if (a.kind === 'new_pill') return t(lang, 'family.alert.new_pill', { name: elderName });
     if (a.kind === 'low_stock') {
       const m = medicineById.get(String(a.data?.medicineId ?? ''));
       return t(lang, 'family.alert.low_stock', { medicine: m ? purpose(m, lang) : '', remaining: a.data?.remaining ?? '' });

@@ -1,9 +1,13 @@
 import {
   answerDidITake,
+  boxCommandsFor,
+  boxEventAction,
+  type BoxEvent,
   dateKey,
   decideTaken,
   elderText,
   isoClock,
+  minutesOfDay,
   newlyMissed,
   nextText,
   pillsBySlot,
@@ -24,6 +28,7 @@ import { useAppStore, type ElderMessage } from '../store/appStore';
 import { clock } from './clock';
 import { newId } from './ids';
 import { deliverAlert, pushLogToFamily } from './linkService';
+import { sendBox } from './boxService';
 import { rescheduleReminders } from './notifications';
 
 export type ElderView = {
@@ -82,11 +87,17 @@ async function afterChange(repo: Repository): Promise<void> {
 }
 
 /** Family alert, once per (kind, date, slot). */
-async function raiseAlert(repo: Repository, kind: 'missed' | 'unsure_answer', date: string, slot: Slot | null) {
+export async function raiseAlert(
+  repo: Repository,
+  kind: 'missed' | 'unsure_answer' | 'unsure_check' | 'new_pill',
+  date: string,
+  slot: Slot | null,
+  data?: Record<string, string | number>,
+) {
   const id = `al-${kind}-${date}-${slot ?? 'x'}`;
   const existing = (await repo.listAlerts()).find((a) => a.id === id);
   if (existing) return;
-  const alert = { id, kind, date, slot: slot ?? undefined, createdAt: clock.now().toISOString(), readAt: null };
+  const alert = { id, kind, date, slot: slot ?? undefined, createdAt: clock.now().toISOString(), readAt: null, data };
   await repo.saveAlert(alert);
   // tell the family: Wi-Fi link first, SMS if that fails (never blocks the elder screen)
   void deliverAlert(alert);
@@ -169,4 +180,30 @@ export function homeMessage(view: ElderView): string {
     });
   }
   return elderText(view.ctx, 'home.allDone');
+}
+
+// ---------- Bluetooth pill box ----------
+
+/** Keep the box lights in step with the screen (open slot lit, blinking when late). */
+export async function syncBoxLights(view: ElderView): Promise<void> {
+  await sendBox(boxCommandsFor(view.states, view.open?.slot ?? null));
+}
+
+/**
+ * A press / lid-open on the box. The lit slot = "I took it" (same double-dose guard as the
+ * screen, no extra confirm: pressing a lit slot is already a deliberate act). Another slot:
+ * nothing changes for the elder, the family gets a quiet alert.
+ */
+export async function handleBoxEvent(e: BoxEvent): Promise<ElderMessage | null> {
+  const view = await loadElderView();
+  if (!view) return null;
+  const nowMin = minutesOfDay(view.now);
+  const current = view.states.find((st) => nowMin >= st.window.opensAt && nowMin < st.window.closesAt)?.slot ?? null;
+  const action = boxEventAction(e, current);
+  if (action.kind === 'taken') return confirmTaken('box');
+  if (action.kind === 'wrong_slot') {
+    const repo = await getRepository();
+    await raiseAlert(repo, 'unsure_check', dateKey(view.now), action.slot, { via: 'box', open: action.open ?? 'none' });
+  }
+  return null;
 }
