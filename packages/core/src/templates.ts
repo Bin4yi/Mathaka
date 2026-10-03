@@ -20,7 +20,10 @@ type TemplateKey =
   | 'home.allDone'
   | 'home.next'
   | 'dose.title'
-  | 'confirm.question';
+  | 'confirm.question'
+  | 'check.prompt'
+  | 'check.match'
+  | 'check.tip';
 
 const T: Record<Lang, Record<TemplateKey, string>> = {
   en: {
@@ -37,6 +40,9 @@ const T: Record<Lang, Record<TemplateKey, string>> = {
     'home.next': 'Next medicine: {next}.',
     'dose.title': 'Your {slot} medicine',
     'confirm.question': 'Did you swallow the pills now?',
+    'check.prompt': 'Put one pill on the dark circle. Then press the big button.',
+    'check.match': 'Yes. This is your {purpose}.',
+    'check.tip': 'Hold the phone a bit higher, so the whole mat is in the picture.',
   },
   si: {
     'answer.taken': 'ඔව්, {name}. ඔබ {slot} බෙහෙත {time}ට බිව්වා. ඊළඟ බෙහෙත {next}.',
@@ -52,6 +58,9 @@ const T: Record<Lang, Record<TemplateKey, string>> = {
     'home.next': 'ඊළඟ බෙහෙත: {next}.',
     'dose.title': 'ඔබේ {slot} බෙහෙත',
     'confirm.question': 'ඔබ දැන් පෙති බිව්වාද?',
+    'check.prompt': 'එක් පෙත්තක් අඳුරු කවය මත තියන්න. ඊට පස්සේ ලොකු බොත්තම ඔබන්න.',
+    'check.match': 'ඔව්. මේ ඔබේ {purpose}.',
+    'check.tip': 'දුරකථනය ටිකක් උඩට අල්ලන්න, මුළු පැදුරම පේන්න.',
   },
   ta: {
     'answer.taken': 'ஆம், {name}. நீங்கள் {slot} மருந்தை {time} மணிக்கு எடுத்தீர்கள். அடுத்தது {next}.',
@@ -67,6 +76,9 @@ const T: Record<Lang, Record<TemplateKey, string>> = {
     'home.next': 'அடுத்த மருந்து: {next}.',
     'dose.title': 'உங்கள் {slot} மருந்து',
     'confirm.question': 'நீங்கள் இப்போது மாத்திரைகளை விழுங்கினீர்களா?',
+    'check.prompt': 'ஒரு மாத்திரையை இருண்ட வட்டத்தில் வைக்கவும். பிறகு பெரிய பொத்தானை அழுத்தவும்.',
+    'check.match': 'ஆம். இது உங்கள் {purpose}.',
+    'check.tip': 'முழு விரிப்பும் தெரிய தொலைபேசியை சற்று உயரமாகப் பிடிக்கவும்.',
   },
 };
 
@@ -134,4 +146,20 @@ export function renderAnswer(ctx: ElderContext, a: ElderAnswer): string {
 /** All raw templates, for tests and the eval "unsafe answer" check. */
 export function allTemplates(): string[] {
   return Object.values(T).flatMap((t) => Object.values(t));
+}
+
+/**
+ * The fixed sentences a family member can record in their own voice for THIS elder.
+ * The elder app plays a recording when the sentence matches exactly, else phone TTS.
+ */
+export function recordablePhrases(ctx: ElderContext, slots: Slot[]): { key: string; text: string }[] {
+  const out: { key: string; text: string }[] = [];
+  for (const s of slots) {
+    out.push({ key: `reminder.${s}`, text: elderText(ctx, 'reminder', { slot: SLOT_WORD[ctx.lang][s] }) });
+    out.push({ key: `dose.title.${s}`, text: elderText(ctx, 'dose.title', { slot: SLOT_WORD[ctx.lang][s] }) });
+  }
+  for (const k of ['confirm.question', 'answer.logged', 'answer.askFamily', 'home.allDone', 'check.prompt'] as const) {
+    out.push({ key: k, text: elderText(ctx, k) });
+  }
+  return out;
 }

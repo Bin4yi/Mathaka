@@ -94,6 +94,12 @@
           "neverForLocation": true,
           "bluetoothAlwaysPermission": "Mathaka connects to the optional Mathaka pill box."
         }
+      ],
+      [
+        "expo-audio",
+        {
+          "microphonePermission": "Mathaka records a family member reading the reminder sentences, so the elder hears a familiar voice. Recordings stay on your phones."
+        }
       ]
     ],
     "experiments": {

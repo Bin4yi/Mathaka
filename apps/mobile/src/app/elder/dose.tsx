@@ -88,6 +88,16 @@ export default function DoseScreen() {
         <SlotPillCard key={p.item.id} lang={lang} pill={p} />
       ))}
 
+      <ElderButton
+        lang={lang}
+        variant="secondary"
+        label={t(lang, 'elder.btn.check')}
+        hint={t(lang, 'elder.btn.checkHint')}
+        icon={Assets.icons.checkPhoto}
+        onPress={() => router.push('/elder/check')}
+        testID="check-pill"
+      />
+
       <View style={[styles.meal, { borderColor: theme.border, backgroundColor: theme.surface }]}>
         {meals.map((m) => (
           <View key={m} style={styles.mealRow}>

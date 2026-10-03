@@ -129,6 +129,7 @@ export default function FamilyHome() {
         <ActionTile lang={lang} label={t(lang, 'family.calibration')} icon={Assets.icons.pharmacist} onPress={() => router.push('/buddy/home')} />
         <ActionTile lang={lang} label={t(lang, 'family.sync')} icon={Assets.icons.family} onPress={() => router.push('/family/sync')} />
         <ActionTile lang={lang} label={t(lang, 'family.aiButton')} icon={Assets.icons.checkPhoto} onPress={() => router.push('/family/ai')} />
+        <ActionTile lang={lang} label={t(lang, 'family.voice')} icon={Assets.icons.speaker} onPress={() => router.push('/family/voice')} />
         <ActionTile lang={lang} label={t(lang, 'family.settings')} icon={Assets.icons.lock} onPress={() => router.push('/family/settings')} />
         <ActionTile lang={lang} label={t(lang, 'buddy.step.box')} icon={Assets.illustrations.pillboxClosed} onPress={() => router.push('/buddy/box')} />
       </View>

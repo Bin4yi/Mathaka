@@ -32,3 +32,12 @@ jest.mock('expo-notifications', () => ({
   AndroidNotificationVisibility: { PUBLIC: 1 },
   SchedulableTriggerInputTypes: { DATE: 'date' },
 }));
+
+jest.mock('expo-audio', () => ({
+  createAudioPlayer: jest.fn(() => ({ play: jest.fn(), pause: jest.fn(), remove: jest.fn() })),
+  useAudioRecorder: jest.fn(() => ({ prepareToRecordAsync: jest.fn(), record: jest.fn(), stop: jest.fn(), uri: null })),
+  useAudioRecorderState: jest.fn(() => ({ isRecording: false, durationMillis: 0 })),
+  setAudioModeAsync: jest.fn(),
+  AudioModule: { requestRecordingPermissionsAsync: jest.fn(async () => ({ granted: true })) },
+  RecordingPresets: { HIGH_QUALITY: {} },
+}));

@@ -9,7 +9,7 @@ export async function readBytes(uri: string): Promise<Uint8Array> {
 }
 
 export function writeAppFile(_folder: string, name: string, bytes: Uint8Array): string {
-  const type = name.endsWith('.bmp') ? 'image/bmp' : name.endsWith('.png') ? 'image/png' : 'image/jpeg';
+  const type = name.endsWith('.m4a') ? 'audio/webm' : name.endsWith('.bmp') ? 'image/bmp' : name.endsWith('.png') ? 'image/png' : 'image/jpeg';
   return `data:${type};base64,${bytesToBase64(bytes)}`;
 }
 

@@ -13,6 +13,7 @@ import { checkMissed, handleBoxEvent, loadElderView } from '../services/doseServ
 import { deliverPending, startFamilyListener } from '../services/linkService';
 import { onReminderTap, rescheduleReminders, setupNotifications } from '../services/notifications';
 import { loadAppSettings } from '../services/settings';
+import { refreshVoiceClips } from '../services/voice';
 import { useAppStore } from '../store/appStore';
 
 void SplashScreen.preventAutoHideAsync();
@@ -26,6 +27,7 @@ export default function RootLayout() {
 
   useEffect(() => {
     loadAppSettings()
+      .then(() => refreshVoiceClips())
       .then(() => setReady(true))
       .catch((e: unknown) => setError(String(e)));
   }, []);
